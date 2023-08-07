@@ -1,14 +1,15 @@
-### Версия
+### Version
 
-#### Задача
-Создано новое приложение для выполнения задачи [ название задачи/функциональности]
 
-#### Внесенные изменения
-- добавлены файлы с реализацией нового приложения.
-- изменены файлы [список файлов] для интеграции нового приложения.
-- обновлены зависимости [список зависимостей] для корректной работы нового приложения.
+#### Task
+Created a new application to perform task [task/feature name]
 
-#### Тестирование
-- [] код успешно проходит проверку на соответствие стандартам оформления кода.
--[] функциональность нового приложения успешно проходит тесты
-- [] новые зависимости успешно устанавливаются и совместимы
+#### Changes made
+- added files with the implementation of the new application [files names].
+- changed files [list of files] to integrate the new application.
+- updated dependencies [list of dependencies] for the new application to work correctly.
+
+#### Testing
+- [] the code successfully passes the coding standards check.
+- [] the functionality of the new application successfully passes the tests.
+- [] new dependencies install successfully and are compatible.
