@@ -1,14 +1,21 @@
 {
   "extends": [
-      "react-app",
-      "react-app/jest"
-    ],
-    "rules": {
-      "no-unused-vars": "warn",
-      "prefer-const": "warn",
-      "no-console": "warn",
-      "quotes": ["warn", "single"],
-      "indent": ["warn", 2],
-      "max-len": ["warn", {"code": 120}]
-    }
+    "react-app",
+    "react-app/jest",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:react-hooks/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "no-unused-vars": "warn",
+    "prefer-const": "warn",
+    "no-console": "warn",
+    "quotes": ["warn", "single"],
+    "indent": ["warn", 2],
+    "max-len": ["warn", { "code": 120 }],
+    "prettier/prettier": "off"
+  },
+  "plugins": ["react", "@typescript-eslint", "prettier"]
 }

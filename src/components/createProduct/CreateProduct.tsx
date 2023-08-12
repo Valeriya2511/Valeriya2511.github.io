@@ -40,15 +40,15 @@ export function CreateProduct({ onCreate }: CreateProductProps) {
   return (
     <form onSubmit={submitHandler}>
       <input
-        type='text'
-        className='border py-2 px-4 mb-2 w-full'
-        placeholder='Enter product title'
+        type="text"
+        className="border py-2 px-4 mb-2 w-full"
+        placeholder="Enter product title"
         value={value}
-        onChange={(event) => setValue(event.target.value)}
+        onChange={event => setValue(event.target.value)}
       />
-      <input className='border py-2 px-4 mb-2 w-full' type='password' placeholder='Enter product email' />
+      <input className="border py-2 px-4 mb-2 w-full" type="password" placeholder="Enter product email" />
       {error && <Error error={error} />}
-      <button type='submit' className='py-2 px-4 border bg-yellow-400 hover:bg-gray-400'>
+      <button type="submit" className="py-2 px-4 border bg-yellow-400 hover:bg-gray-400">
         Create
       </button>
     </form>

@@ -1,15 +1,15 @@
-import { useState } from "react";
-import { TodoList } from "../components/TodoList";
+import { useState } from 'react';
+import { TodoList } from '../components/TodoList';
 
 export function TodoPage() {
   const [todos, setTodo] = useState([
-    { id: 1, title: "Todo1", complited: false },
-    { id: 2, title: "Todo2", complited: false },
+    { id: 1, title: 'Todo1', complited: false },
+    { id: 2, title: 'Todo2', complited: false },
   ]);
-  const [todoTitle, setTodoTitle] = useState("");
+  const [todoTitle, setTodoTitle] = useState('');
 
-  const addTodo = (event) => {
-    if (event.key === "Enter") {
+  const addTodo = event => {
+    if (event.key === 'Enter') {
       setTodo([
         ...todos,
         {
@@ -18,7 +18,7 @@ export function TodoPage() {
           complited: false,
         },
       ]);
-      setTodoTitle("");
+      setTodoTitle('');
     }
   };
 
@@ -34,7 +34,7 @@ export function TodoPage() {
             className="border max-w-xs w-full px-4 py-2"
             type="text"
             value={todoTitle}
-            onChange={(event) => setTodoTitle(event.target.value)}
+            onChange={event => setTodoTitle(event.target.value)}
             onKeyPress={addTodo}
           />
         </div>

@@ -15,14 +15,14 @@ export function ProductsPage() {
     addProduct(product);
   };
   return (
-    <div className='container mx-auto max-w-2xl pt-5'>
-      <h1 className='text-center text-2xl mb-4'>Some title</h1>
+    <div className="container mx-auto max-w-2xl pt-5">
+      <h1 className="text-center text-2xl mb-4">Some title</h1>
 
       {load && <Loading />}
       {error && <Error error={error} />}
 
-      <div className='productList flex flex-wrap gap-4 justify-center'>
-        {products.map((product) => (
+      <div className="productList flex flex-wrap gap-4 justify-center">
+        {products.map(product => (
           <Product product={product} key={product.id} />
         ))}
       </div>
@@ -32,8 +32,8 @@ export function ProductsPage() {
         </Modal>
       )}
       <button
-        type='button'
-        className='py-2 px-4 border bg-green-400 block mx-auto hover:bg-gray-400'
+        type="button"
+        className="py-2 px-4 border bg-green-400 block mx-auto hover:bg-gray-400"
         onClick={() => setModal(true)}
       >
         Show modal window
