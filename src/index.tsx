@@ -10,5 +10,3 @@ root.render(
     <App />
   </BrowserRouter>,
 );
-
-const a = 5;
