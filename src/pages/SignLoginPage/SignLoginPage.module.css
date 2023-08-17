@@ -1,0 +1,21 @@
+.autorizationPage {
+  background-color: grey;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+}
+
+.autorizationWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  padding: 25px 30px;
+  background-color: #002d28;
+  min-width: 300px;
+  max-width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #000000;
+}

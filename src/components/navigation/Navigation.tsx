@@ -9,8 +9,8 @@ export function Navigation() {
       <Link className="border px-4 py-2 hover:bg-orange-400" to={'/about'}>
         About
       </Link>
-      <Link className="border px-4 py-2 hover:bg-orange-400" to={'/todo'}>
-        Todo
+      <Link className="border px-4 py-2 hover:bg-orange-400" to={'/autorization'}>
+        Autorization
       </Link>
     </nav>
   );
