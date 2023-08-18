@@ -5,13 +5,13 @@ export function Navigation() {
   return (
     <nav className={styles.navigation}>
       <p>Navigation: </p>
-      <Link className={styles.productItem} to={'/'}>
+      <Link className={styles.productItem} to={'/main'}>
         MainPage
       </Link>
       <Link className="" to={'/about'}>
         About
       </Link>
-      <Link to={'/autorization'}>Autorization</Link>
+      <Link to={'/'}>Autorization</Link>
       <Link to={'/registration'}>RegistrationPage</Link>
       <Link to={'/products'}>products</Link>
       <Link to={'/productItem1111'}>productItem1111</Link>

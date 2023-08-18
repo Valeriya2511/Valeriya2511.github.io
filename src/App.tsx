@@ -18,9 +18,9 @@ function App() {
     <>
       <Navigation />
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path="/" element={<SignLoginPage />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/autorization" element={<SignLoginPage />} />
+        <Route path="/main" element={<MainPage />} />
         <Route path="/registration" element={<RegistrationPage />} />
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/productItem1111" element={<ProductItemPage />} />
