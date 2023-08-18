@@ -1,17 +1,22 @@
 import { Link } from 'react-router-dom';
+import styles from './Navigation.module.css';
+
 export function Navigation() {
   return (
-    <nav className="flex justify-center items-center gap-4 py-2 bg-gray-400">
+    <nav className={styles.navigation}>
       <p>Navigation: </p>
-      <Link className="border px-4 py-2 hover:bg-orange-400" to={'/'}>
-        Products
+      <Link className={styles.productItem} to={'/'}>
+        MainPage
       </Link>
-      <Link className="border px-4 py-2 hover:bg-orange-400" to={'/about'}>
+      <Link className="" to={'/about'}>
         About
       </Link>
-      <Link className="border px-4 py-2 hover:bg-orange-400" to={'/autorization'}>
-        Autorization
-      </Link>
+      <Link to={'/autorization'}>Autorization</Link>
+      <Link to={'/registration'}>RegistrationPage</Link>
+      <Link to={'/products'}>products</Link>
+      <Link to={'/productItem1111'}>productItem1111</Link>
+      <Link to={'/user'}>user</Link>
+      <Link to={'/basket'}>basket</Link>
     </nav>
   );
 }

@@ -8,6 +8,7 @@ export const getToken = async () => {
       Authorization: `Basic ${env.AUTORIZATION}`,
     },
   });
-  const token = data.json();
-  return console.log(token);
+  const token = await data.json();
+  const { token_type, access_token } = token;
+  return console.log(token_type, access_token);
 };
