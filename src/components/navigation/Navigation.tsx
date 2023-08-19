@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Navigation.module.css';
-import { privatRoutesList, publicRoutesList } from '../router/Router';
+import { privatRoutesList, publicRoutesList } from '../router/RoutsList';
 
 export function Navigation() {
   const isAuth: boolean = true;
@@ -9,15 +9,15 @@ export function Navigation() {
     <nav className={styles.navigation}>
       {isAuth
         ? privatRoutesList.map(ob => (
-          <Link className={styles.link} to={ob.path}>
-            {ob.page}
-          </Link>
-        ))
+            <Link className={styles.link} to={ob.path}>
+              {ob.page}
+            </Link>
+          ))
         : publicRoutesList.map(ob => (
-          <Link className={styles.link} to={ob.path}>
-            {ob.page}
-          </Link>
-        ))}
+            <Link className={styles.link} to={ob.path}>
+              {ob.page}
+            </Link>
+          ))}
     </nav>
   );
 }
