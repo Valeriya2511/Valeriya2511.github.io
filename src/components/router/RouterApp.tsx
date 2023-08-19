@@ -5,12 +5,12 @@ import { ProductItemPage } from '../../pages/productItemPage/ProductItemPage';
 import { UserPage } from '../../pages/userPage/UserPage';
 import { BasketPage } from '../../pages/basketPage/BasketPage';
 import { privatRoutesList } from '../../components/router/RoutsList';
-import SignLoginPage from '../../pages/signLoginPage/SignLoginPage';
+import SignLoginPage from '../../pages/LoginPage/SignLoginPage';
 import { ProductsPage } from '../../pages/productsPage/ProductsPage';
 import { AboutPage } from '../../pages/aboutPage/AboutPage';
 
 export function RouterApp() {
-  const isAuth: boolean = false;
+  const isAuth: boolean = true;
   return (
     <Routes>
       <Route path="/" element={<SignLoginPage />} />
