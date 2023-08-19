@@ -1,17 +1,23 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import styles from './Navigation.module.css';
+import { privatRoutesList, publicRoutesList } from '../router/Router';
+
 export function Navigation() {
+  const isAuth: boolean = true;
   return (
-    <nav className="flex justify-center items-center gap-4 py-2 bg-gray-400">
-      <p>Navigation: </p>
-      <Link className="border px-4 py-2 hover:bg-orange-400" to={'/'}>
-        Products
-      </Link>
-      <Link className="border px-4 py-2 hover:bg-orange-400" to={'/about'}>
-        About
-      </Link>
-      <Link className="border px-4 py-2 hover:bg-orange-400" to={'/todo'}>
-        Todo
-      </Link>
+    <nav className={styles.navigation}>
+      {isAuth
+        ? privatRoutesList.map(ob => (
+          <Link className={styles.link} to={ob.path}>
+            {ob.page}
+          </Link>
+        ))
+        : publicRoutesList.map(ob => (
+          <Link className={styles.link} to={ob.path}>
+            {ob.page}
+          </Link>
+        ))}
     </nav>
   );
 }
