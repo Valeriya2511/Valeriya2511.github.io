@@ -8,16 +8,16 @@ export function Navigation() {
   return (
     <nav className={styles.navigation}>
       {isAuth
-        ? privatRoutesList.map(ob => (
-            <Link className={styles.link} to={ob.path}>
-              {ob.page}
-            </Link>
-          ))
-        : publicRoutesList.map(ob => (
-            <Link className={styles.link} to={ob.path}>
-              {ob.page}
-            </Link>
-          ))}
+        ? privatRoutesList.map((ob, index) => (
+          <Link className={styles.link} to={ob.path} key={index}>
+            {ob.page}
+          </Link>
+        ))
+        : publicRoutesList.map((ob, index) => (
+          <Link className={styles.link} to={ob.path} key={index}>
+            {ob.page}
+          </Link>
+        ))}
     </nav>
   );
 }
