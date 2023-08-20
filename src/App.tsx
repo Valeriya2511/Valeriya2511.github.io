@@ -6,7 +6,7 @@ import { Navigation } from './components/navigation/Navigation';
 import SignLoginPage from './pages/SignLoginPage/SignLoginPage';
 import { getToken } from './ecommerceAPI/getToken';
 
-console.log(getToken());
+getToken();
 
 function App() {
   return (

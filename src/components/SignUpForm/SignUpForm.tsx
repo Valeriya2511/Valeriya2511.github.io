@@ -1,9 +1,11 @@
 import InputField from '../UI/InputField/InputField';
 import ButtonAutorization from '../UI/ButtonAutorization/ButtonAutorization';
+import { useAutorization } from '../../hooks/useAutorization/useAutorization';
 // import { IFormProps } from '../LoginForm/LoginForm';
 export default function SignUpForm() {
+  const { submitHandler } = useAutorization();
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <p>
         <InputField type="text" name="name" placeholder="You name" />
       </p>
@@ -14,7 +16,7 @@ export default function SignUpForm() {
         <InputField type="password" name="password" placeholder="Password" />
       </p>
       <p>
-        <ButtonAutorization type="submit" children="Registration" onClick={() => {}} />
+        <ButtonAutorization type="submit" children="Registration" />
       </p>
     </form>
   );

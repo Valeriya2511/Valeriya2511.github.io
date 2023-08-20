@@ -1,13 +1,12 @@
 import InputField from '../UI/InputField/InputField';
 import ButtonAutorization from '../UI/ButtonAutorization/ButtonAutorization';
 import React from 'react';
-// export interface IFormProps {
-//   value: string;
-//   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-// }
+import { useAutorization } from '../../hooks/useAutorization/useAutorization';
+
 export default function LoginForm() {
+  const { submitHandler } = useAutorization();
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <p>
         <InputField type="email" name="email" placeholder="Login email" />
       </p>
@@ -15,7 +14,7 @@ export default function LoginForm() {
         <InputField type="password" name="password" placeholder="Password" />
       </p>
       <p>
-        <ButtonAutorization type="submit" children="Login" onClick={() => {}} />
+        <ButtonAutorization type="submit" children="Login" />
       </p>
     </form>
   );

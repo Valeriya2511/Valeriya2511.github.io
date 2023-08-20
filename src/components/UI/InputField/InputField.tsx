@@ -9,17 +9,45 @@ export interface InputFieldProps {
 
 export default function InputField({ type, name, placeholder }: InputFieldProps) {
   const [value, setValue] = useState('');
+  function validate(event: React.ChangeEvent<HTMLInputElement>) {
+    setValue(event.target.value.trim());
+    if (type === 'email') {
+      if (!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/u.test(value)) {
+        event.currentTarget.setCustomValidity('I am expecting an e-mail address!');
+        event.target.value = '';
+      }
+      if (/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/u.test(value)) {
+        event.currentTarget.setCustomValidity('');
+        setValue(event.target.value.trim());
+      }
+    }
+    if (type === 'password') {
+      if (!/^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{7,}$/u.test(value)) {
+        event.currentTarget.setCustomValidity(
+          `Password must contain min legth 8 charcter and one: 
+           uppercase and lowercase letter, digit, special character, 
+           not contain leading or trailing whitespace
+          `,
+        );
+        event.target.value = '';
+      }
+      if (/^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{7,}$/u.test(value)) {
+        event.currentTarget.setCustomValidity('');
+        setValue(event.target.value.trim());
+      }
+    }
+  }
   return (
-    <input
-      type={type}
-      name={name}
-      placeholder={placeholder}
-      className={styles.inputField}
-      required={true}
-      value={value}
-      onChange={event => {
-        setValue(event.target.value);
-      }}
-    />
+    <>
+      <input
+        type={type}
+        name={name}
+        placeholder={placeholder}
+        className={styles.inputField}
+        required={true}
+        value={value}
+        onChange={validate}
+      />
+    </>
   );
 }
