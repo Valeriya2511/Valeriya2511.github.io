@@ -3,6 +3,8 @@ import { useState } from 'react';
 export function useAutorization() {
   const [login, setLogin] = useState(false);
 
+  const [value, setValue] = useState('');
+
   const changeLoginHandler = () => {
     setLogin(true);
   };
@@ -10,5 +12,21 @@ export function useAutorization() {
   const changeSignUpHandler = () => {
     setLogin(false);
   };
-  return { login, changeLoginHandler, changeSignUpHandler };
+
+  const submitHandler = (event: React.FormEvent) => {
+    event.preventDefault();
+    const formData = new FormData(document.forms[0]);
+    const userData = {
+      name: '',
+      email: '',
+      password: '',
+    };
+    userData.name = `${formData.get('name')}`;
+    userData.email = `${formData.get('email')}`;
+    userData.password = `${formData.get('password')}`;
+    localStorage.setItem(`${userData.email}`, `${userData.password}`);
+    console.log(userData);
+  };
+
+  return { login, changeLoginHandler, changeSignUpHandler, submitHandler };
 }

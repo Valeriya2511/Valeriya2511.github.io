@@ -3,8 +3,7 @@ import { Navigation } from './components/navigation/Navigation';
 import { getToken } from './ecommerceAPI/getToken';
 import { RouterApp } from './components/router/RouterApp';
 
-// getToken();
-
+getToken();
 function App() {
   return (
     <>
