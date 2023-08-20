@@ -1,0 +1,16 @@
+.buttonAutorization {
+  background-color: #009688;
+  border: none;
+  color: #ffffff;
+  padding: 10px 16px;
+  min-width: 200px;
+  font-size: 18px;
+}
+
+.buttonAutorization:hover,
+.buttonAutorization:focus {
+  background-color: #ffffff;
+  color: #009688;
+  box-shadow: 0 0 5px #000000;
+  cursor: pointer;
+}
