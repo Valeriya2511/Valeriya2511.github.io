@@ -17,7 +17,7 @@ export function Navigation() {
           <Link to="/main">Main</Link>
           <Link to="/products">Catalog</Link>
           <Link to="/about">About</Link>
-
+          <Link to="/basket">Basket</Link>
           <Link to="/UserPage">
             <img className={styles.userImg} src="./user-auth.jpg" alt="user" />
           </Link>
