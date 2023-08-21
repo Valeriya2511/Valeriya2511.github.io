@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { ProductsPage } from './pages/productsPage/ProductsPage';
 import { AboutPage } from './pages/aboutPage/AboutPage';
 import { Navigation } from './components/navigation/Navigation';
-import SignLoginPage from './pages/signLoginPage/SignLoginPage';
+import SignLoginPage from './pages/signLoginPage/signLoginPage';
 import { getToken } from './ecommerceAPI/getToken';
 import { MainPage } from './pages/mainPage/MainPage';
 import { RegistrationPage } from './pages/registrationPage/RegistrationPage';
