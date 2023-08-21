@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: #e1edce;
+  align-items: center;
+}
+
+.img404 {
+  width: 50%;
+  height: 50%;
+}
+
+.h1text {
+  margin: 5 auto;
+}

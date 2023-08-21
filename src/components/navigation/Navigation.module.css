@@ -22,3 +22,10 @@
   color: #fff;
   background-color: #fc9b27;
 }
+
+.userImg {
+  max-width: 30px;
+  max-height: 30px;
+  box-sizing: border-box;
+  margin: 0px;
+}
