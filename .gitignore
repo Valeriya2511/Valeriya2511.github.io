@@ -8,9 +8,6 @@
 # testing
 /coverage
 
-# production
-/build
-
 # misc
 .DS_Store
 .env
@@ -31,9 +28,6 @@ yarn-error.log*
 
 # testing
 /coverage
-
-# production
-/build
 
 # misc
 .DS_Store
