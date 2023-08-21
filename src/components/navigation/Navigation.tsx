@@ -6,9 +6,12 @@ import { AuthContext } from '../../context/authContext/AuthContext';
 export function Navigation() {
   const { isAuth, setIsAuth } = useContext(AuthContext);
 
+  const changeAuth = (isAuth: boolean) => {
+    isAuth ? setIsAuth(false) : setIsAuth(true);
+  };
   return (
     <nav className={styles.navigation}>
-      <button onClick={() => setIsAuth(true)}>isAuth</button>
+      <button onClick={() => changeAuth(isAuth)}>isAuth</button>
       {isAuth ? (
         <>
           <Link to="/main">Main</Link>
