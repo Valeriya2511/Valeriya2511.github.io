@@ -9,6 +9,7 @@ export const getToken = async () => {
     },
   });
   const token = await data.json();
-  const { token_type, access_token } = token;
-  return console.log(token_type, access_token);
+
+  //console.log(`${token_type} ${access_token}`);
+  return console.log('Полученный от ecommerceTools обьект токена: ', token);
 };
