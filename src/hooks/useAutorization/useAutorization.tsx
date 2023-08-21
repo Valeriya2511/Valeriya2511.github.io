@@ -5,8 +5,6 @@ import env from 'react-dotenv';
 export function useAutorization() {
   const [login, setLogin] = useState(false);
 
-  const [value, setValue] = useState('');
-
   const changeLoginHandler = () => {
     setLogin(true);
   };
@@ -28,7 +26,7 @@ export function useAutorization() {
     userData.email = `${formData.get('email')}`;
     userData.password = `${formData.get('password')}`;
     localStorage.setItem(`${userData.email}`, `${userData.password}`);
-    return userData;
+    return console.log('Сформированный объект для создания клиента: ', userData);
   };
 
   return { login, changeLoginHandler, changeSignUpHandler, submitHandler };

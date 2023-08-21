@@ -14,20 +14,36 @@ export function Navigation() {
       <button onClick={() => changeAuth(isAuth)}>isAuth</button>
       {isAuth ? (
         <>
-          <Link to="/main">Main</Link>
-          <Link to="/products">Catalog</Link>
-          <Link to="/about">About</Link>
-          <Link to="/basket">Basket</Link>
-          <Link to="/UserPage">
+          <Link className={styles.link} to="/main">
+            Main
+          </Link>
+          <Link className={styles.link} to="/products">
+            Catalog
+          </Link>
+          <Link className={styles.link} to="/about">
+            About
+          </Link>
+          <Link className={styles.link} to="/basket">
+            Basket
+          </Link>
+          <Link className={styles.link} to="/UserPage">
             <img className={styles.userImg} src="./user-auth.jpg" alt="user" />
           </Link>
-          <Link to="/">Logout</Link>
+          <Link className={styles.link} to="/">
+            Logout
+          </Link>
         </>
       ) : (
         <>
-          <Link to="/">Login</Link>
-          <Link to="/main">Main</Link>
-          <Link to="/registration">SignUp</Link>
+          <Link className={styles.link} to="/">
+            Login
+          </Link>
+          <Link className={styles.link} to="/main">
+            Main
+          </Link>
+          <Link className={styles.link} to="/registration">
+            SignUp
+          </Link>
         </>
       )}
     </nav>
