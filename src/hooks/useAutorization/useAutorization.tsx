@@ -17,15 +17,15 @@ export function useAutorization() {
     event.preventDefault();
     const formData = new FormData(document.forms[0]);
     const userData = {
-      name: '',
+      firstName: '',
       email: '',
       password: '',
     };
-    userData.name = `${formData.get('name')}`;
+    userData.firstName = `${formData.get('name')}`;
     userData.email = `${formData.get('email')}`;
     userData.password = `${formData.get('password')}`;
     localStorage.setItem(`${userData.email}`, `${userData.password}`);
-    console.log(userData);
+    return console.log(userData);
   };
 
   return { login, changeLoginHandler, changeSignUpHandler, submitHandler };
