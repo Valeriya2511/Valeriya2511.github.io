@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import { getToken } from '../../ecommerceAPI/getToken';
-import env from 'react-dotenv';
 
 export function useAutorization() {
   const [login, setLogin] = useState(false);
@@ -25,8 +23,8 @@ export function useAutorization() {
     userData.firstName = `${formData.get('name')}`;
     userData.email = `${formData.get('email')}`;
     userData.password = `${formData.get('password')}`;
-    localStorage.setItem(`${userData.email}`, `${userData.password}`);
-    return console.log('Сформированный объект для создания клиента: ', userData);
+    // localStorage.setItem(`${userData.email}`, `${userData.password}`);
+    return userData;
   };
 
   return { login, changeLoginHandler, changeSignUpHandler, submitHandler };
