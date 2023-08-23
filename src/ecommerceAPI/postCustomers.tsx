@@ -1,18 +1,25 @@
-// import { getToken } from './getToken';
-// import { useAutorization } from '../hooks/useAutorization/useAutorization';
-// import env from 'react-dotenv';
-
-// const postCustomer = async (token: Promise<string>, userData: {}) => {
-//   const { token_type: string, access_token } = token;
-//   const postData = await fetch(`${env.API_URL}/${env.PROJECT_KEY}/customers`, {
-//     method: 'POST',
-//     headers: {
-//       Authorization: `${token_type} ${access_token}`,
-//       'Content-Type': 'application/json;charset=utf-8',
-//     },
-//     body: JSON.stringify(userData),
-//   })
-//     .then(response => response.json())
-//     .then(data => console.log(data));
-// };
-export {};
+export const postClient = async (client: {}, token: string) => {
+  // console.log(client, token);
+  const data = await fetch(
+    'https://api.australia-southeast1.gcp.commercetools.com/ecommerce-application_1/customers/',
+    {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer ' + token,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify(client),
+    },
+  )
+    .then(res => res.json())
+    .then(data => {
+      const { firstName, email, id } = data.customer;
+      alert(`
+      Customer will created:
+      ID: ${id},
+      Name: ${firstName},
+      Email: ${email}
+      `);
+    });
+  return await data;
+};
