@@ -18,7 +18,7 @@ export function RouterApp() {
       <Route path="/" element={<SignLoginPage />} />
       <Route path="/main" element={<MainPage />} />
       <Route path="/registration" element={<RegistrationPage />} />
-      <Route path="*" element={<Page404 />} />
+      <Route path="/*" element={<Page404 />} />
       {isAuth && <Route path="/products" element={<ProductsPage />} />}
       {isAuth && <Route path="/productItem1111" element={<ProductItemPage />} />}
       {isAuth && <Route path="/user" element={<UserPage />} />}
