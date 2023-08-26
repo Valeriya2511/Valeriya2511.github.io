@@ -20,19 +20,30 @@
   padding: 8px 10px;
 }
 
-.link:hover,
-.link:focus {
-  background-color: #ee971c;
+.linkIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background-color: #009688;
+  padding: 7px 10px;
 }
 
-/* .link_activ {
-  color: #fff;
-  background-color: #fc9b27;
-} */
+.iconsvg {
+  max-height: 20px;
+}
 
-.userImg {
-  max-width: 30px;
-  max-height: 30px;
-  box-sizing: border-box;
-  margin: 0px;
+.imgCont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 32px;
+  overflow: hidden;
+}
+
+.link:hover,
+.link:focus,
+.linkIcon:hover,
+.linkIcon:focus {
+  background-color: #ee971c;
 }
