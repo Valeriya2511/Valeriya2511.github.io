@@ -1,5 +1,4 @@
 export const postClient = async (client: {}, token: string) => {
-  // console.log(client, token);
   const data = await fetch(
     'https://api.australia-southeast1.gcp.commercetools.com/ecommerce-application_1/customers/',
     {

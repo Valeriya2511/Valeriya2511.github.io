@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import InputField from '../UI/InputField/InputField';
 import ButtonAutorization from '../UI/ButtonAutorization/ButtonAutorization';
 import { useAutorization } from '../../hooks/useAutorization/useAutorization';
-// import { IFormProps } from '../LoginForm/LoginForm';
 import { getToken } from '../../ecommerceAPI/getToken';
 import { postClient } from '../../ecommerceAPI/postCustomers';
 import { AuthContext } from '../../context/authContext/AuthContext';
