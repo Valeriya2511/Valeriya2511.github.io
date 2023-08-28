@@ -11,6 +11,10 @@ export const getProducts = async (token: string) => {
     },
   )
     .then(res => res.json())
-    .then(data => console.log(data.results));
+    .then(data =>
+      data.results.forEach((element: {}) => {
+        console.log(element);
+      }),
+    );
   return await data;
 };
