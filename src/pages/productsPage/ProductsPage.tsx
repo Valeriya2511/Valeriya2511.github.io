@@ -40,8 +40,8 @@ export function ProductsPage() {
       {products.length &&
         products.map((element, index) => {
           //const el: { masterData: { current: { name: { en: string } } } } = element;
-
-          return <ProductCard title={element} />;
+          const { id } = element;
+          return <ProductCard product={element} key={id} />;
         })}
     </div>
   );
