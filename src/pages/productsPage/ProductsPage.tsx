@@ -13,8 +13,13 @@ import { getProducts } from '../../ecommerceAPI/getProducts';
 
 export function ProductsPage() {
   const [products, setProducts] = useState([]);
+  const titles = [];
   useEffect(() => {
     console.log(products);
+    // products.forEach(element => {
+    //   const el: { masterData: { current: { name: { en: string } } } } = element;
+    //   console.log(el.masterData.current.name.en);
+    // });
   }, [products]);
   return (
     <div className={styles.container}>
@@ -33,12 +38,11 @@ export function ProductsPage() {
         </button>
       </div>
       {products.length &&
-        products.map(({ id }) => {
-          return <ProductCard key={id} />;
-        })}
+        products.map((element, index) => {
+          //const el: { masterData: { current: { name: { en: string } } } } = element;
 
-      {/* <ProductCard />
-      <ProductCard /> */}
+          return <ProductCard title={element} />;
+        })}
     </div>
   );
 }

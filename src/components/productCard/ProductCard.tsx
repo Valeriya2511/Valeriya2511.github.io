@@ -10,10 +10,10 @@ import { Link } from 'react-router-dom';
 // onClick={onClose}
 // }
 
-export function ProductCard() {
+export function ProductCard({ title }: any) {
   const productDataObject = {
-    name: 'Название товара',
-    imageURL: 'https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/085574_1_medium.jpg',
+    name: `${title.masterData.current.name.en}`,
+    imageURL: `${title.masterData.current.masterVariant.images[0].url}`,
     price: 345,
     productId: '85574',
     brand: 'Coton',
