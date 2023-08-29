@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { AuthContext } from '../../context/authContext/AuthContext';
 
 export function useAutorization() {
   const [login, setLogin] = useState(false);
-
+  const { setIsAuth } = useContext(AuthContext);
   const changeLoginHandler = () => {
     setLogin(true);
   };
@@ -13,7 +14,7 @@ export function useAutorization() {
 
   const submitHandler = async (event: React.FormEvent) => {
     event.preventDefault();
-
+    setIsAuth(true);
     const formData = new FormData(document.forms[0]);
     const userData = {
       firstName: '',
@@ -26,6 +27,5 @@ export function useAutorization() {
     // localStorage.setItem(`${userData.email}`, `${userData.password}`);
     return userData;
   };
-
   return { login, changeLoginHandler, changeSignUpHandler, submitHandler };
 }
