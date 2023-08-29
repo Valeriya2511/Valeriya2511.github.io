@@ -42,3 +42,13 @@ export const getToken = async () => {
 // )
 //   .then(res => res.json())
 //   .then(data => console.log(data));
+
+// fetch('https://api.australia-southeast1.gcp.commercetools.com/ecommerce-application_1/products?limit=30', {
+//   method: 'GET',
+//   headers: {
+//     Authorization: 'Bearer jznt4UoyAd7ijzcaiQ2lC4lOej5JcZ-u',
+//     'Content-Type': 'application/x-www-form-urlencoded',
+//   },
+// })
+//   .then(res => res.json())
+//   .then(data => console.log(data));

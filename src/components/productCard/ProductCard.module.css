@@ -1,5 +1,6 @@
 .container {
   display: flex;
+  max-width: 250px;
   flex-direction: column;
   background-color: #009688;
   margin: 15px;

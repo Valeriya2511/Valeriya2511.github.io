@@ -1,19 +1,14 @@
-import { ReactNode } from 'react';
 import styles from './ProductCard.module.css';
 import { Link } from 'react-router-dom';
 
-// type productDataObject = {
-//   name: string,
-//   image: string,
-//   price: number,
-//   productId: string
-// onClick={onClose}
+// interface productDataObject {
+//   product: {};
 // }
 
-export function ProductCard() {
+export function ProductCard({ product }: any) {
   const productDataObject = {
-    name: 'Название товара',
-    imageURL: 'https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/085574_1_medium.jpg',
+    name: `${product.masterData.current.name.en}`,
+    imageURL: `${product.masterData.current.masterVariant.images[0].url}`,
     price: 345,
     productId: '85574',
     brand: 'Coton',
