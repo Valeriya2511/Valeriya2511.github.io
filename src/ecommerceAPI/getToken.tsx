@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import env from 'react-dotenv';
-import axios from 'axios';
-
-
-export const getToken = async () => {
-  const data = await fetch(`${env.AUTH_URL}/oauth/token?grant_type=client_credentials&scope=${env.SCOPES}`, {
-    method: 'POST',
-    headers: {
-      Authorization: `${env.AUTORIZATION}`,
-=======
 export const getToken = async () => {
   const codeStr = window.btoa('EJHaCeyUqN60PpaC0MPC80Ls:BnVI1t9pXw6HoOCZ37A-YjmiNYmYpkgG');
   const data = await fetch(
@@ -19,7 +8,6 @@ export const getToken = async () => {
         Authorization: 'Basic ' + codeStr,
         'Content-Type': 'application/x-www-form-urlencoded',
       },
->>>>>>> Develop
     },
   );
   // .then(res => res.json())
