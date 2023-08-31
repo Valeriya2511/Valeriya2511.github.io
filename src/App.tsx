@@ -3,6 +3,7 @@ import { getToken } from './ecommerceAPI/getToken';
 import { RouterApp } from './components/router/RouterApp';
 import { AuthContext } from './context/authContext/AuthContext';
 import Header from './components/layer/header/Header';
+import Footer from './components/layer/footer/Footer'
 import { useState } from 'react';
 // getToken();
 function App() {
@@ -16,6 +17,7 @@ function App() {
     >
       <Header />
       <RouterApp />
+      <Footer/>
     </AuthContext.Provider>
   );
 }
