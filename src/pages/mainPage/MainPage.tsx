@@ -8,19 +8,26 @@ export function MainPage() {
         Just a store
       </h1>
       <p className = {styles.greetings}>
-        Welcome to our simple online store! Our company welcomes everyone who visits the site!
+        ★ Welcome to our simple online store! Our company welcomes everyone who visits the site!
       </p>
       <p className = {styles.greetings}>
-        Our simple online store offers the lowest prices, don't even try to find cheaper!
+        ★ Our simple online store offers the lowest prices, don't even try to find cheaper!
       </p>
+      <p className = {styles.itemlist}>Our range</p>
+      <ul className={styles.list}>
+        <li className={`${styles.item} ${styles.jacket}`}></li>
+        <li className={`${styles.item} ${styles.bag}`}></li>
+        <li className={`${styles.item} ${styles.shirt}`}></li>
+        <li className={`${styles.item} ${styles.shoes}`}></li>
+        <li className={`${styles.item} ${styles.ring}`}></li>
+        <li className={`${styles.item} ${styles.scarf}`}></li>
+        <li className={`${styles.item} ${styles.wallet}`}></li>
+        <li className={`${styles.item} ${styles.belt}`}></li>
+        <li className={`${styles.item} ${styles.jeans}`}></li>
+        <li className={`${styles.item} ${styles.dress}`}></li>
+        <li className={`${styles.item} ${styles.glasses}`}></li>
+    </ul>
     </div>
-    <footer className= {styles.footer}>
-      <ul>
-        <li className="law">© 2023 All rights reserved, but this is not accurate</li>
-        <a href="tel:87777777778"><li className= {styles.tel}>8 (777) 777 77 78</li></a>
-        <li></li>
-      </ul>
-    </footer>
   </div>
   )
 }
