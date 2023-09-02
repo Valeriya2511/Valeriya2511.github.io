@@ -10,16 +10,14 @@ import { ProductCard } from '../../components/productCard/ProductCard';
 import styles from './ProductsPage.module.css';
 import { getToken } from '../../ecommerceAPI/getToken';
 import { getProducts } from '../../ecommerceAPI/getProducts';
+import { Sidebar } from '../../components/sidebar/Sidebar';
 
 export function ProductsPage() {
   const [products, setProducts] = useState([]);
+
   const titles = [];
   useEffect(() => {
     console.log(products);
-    // products.forEach(element => {
-    //   const el: { masterData: { current: { name: { en: string } } } } = element;
-    //   console.log(el.masterData.current.name.en);
-    // });
   }, [products]);
   return (
     <div className={styles.container}>
@@ -36,13 +34,18 @@ export function ProductsPage() {
         >
           Show products
         </button>
+        <div className={styles.twoColumnWrapper}></div>
       </div>
-      {products.length &&
-        products.map((element, index) => {
-          //const el: { masterData: { current: { name: { en: string } } } } = element;
-          const { id } = element;
-          return <ProductCard product={element} key={id} />;
-        })}
+      <div className={styles.sidebarColumn}>
+        <Sidebar />
+      </div>
+      <div className={styles.productsColumn}>
+        {products.length &&
+          products.map((element, index) => {
+            const { id } = element;
+            return <ProductCard product={element} key={id} />;
+          })}
+      </div>
     </div>
   );
 }

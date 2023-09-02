@@ -55,6 +55,10 @@
 
 .title {
   margin: 5px auto;
+  font-size: 100%;
+  padding: 3px;
+  display: block;
+  height: 40px;
 }
 
 .discount {
