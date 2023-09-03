@@ -18,7 +18,7 @@ export function ProductCard({ product }: any) {
     brand: '',
     color: '',
     size: '',
-    description: 'bla bla bla',
+    description: 'bla-bla-bla',
     categorie: catList.join('/ '),
     currency: 'USD',
     discount: '-10%',
