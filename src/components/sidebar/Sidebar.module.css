@@ -31,6 +31,19 @@
   padding: 3px;
 }
 
-.menuItem:hover {
+.menuItem:hover,
+.menuItem::after {
   background-color: #ee971c;
+}
+
+.menuItemAncestor {
+  background-color: #009688;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  box-shadow: 0px 0px 7px 0px #fff;
+  color: #ee971c;
+  font-size: 1rem;
+  font-family: Verdana, sans-serif;
+  width: 100%;
+  padding: 3px;
 }

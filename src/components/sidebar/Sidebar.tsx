@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import styles from './Sidebar.module.css';
 import { getCategories } from '../../ecommerceAPI/getCategories';
 import { getToken } from '../../ecommerceAPI/getToken';
-import internal from 'stream';
 
 interface Category {
   ancestors: [];
@@ -22,21 +21,22 @@ interface Category {
   version: number;
   versionModifiedAt: string;
 }
+
+interface Ancestors {
+  typeId: string;
+  id: string;
+}
 function filterSidebar(catList: Category[], parentId: string) {
   const res = catList.filter(cat => {
-    if (cat.parent.id === parentId) {
-      console.log('cat.parent.id === parentId', cat.parent.id === parentId, cat.parent.id, parentId);
-    }
     return cat.parent.id === parentId;
   });
   return res;
 }
-
 export function Sidebar() {
   const [categoriesVisible, setCategoriesVisible] = useState<Category[]>([]);
+  const [categoriesData, setcategoriesData] = useState<Category[]>([]);
   const [mainCategories, setMainCategories] = useState<Category[]>([]);
   const [subCategories, setSubCategories] = useState<Category[]>([]);
-
   return (
     <section className={styles.sidebar}>
       <ul className={styles.menuList}>
@@ -47,7 +47,7 @@ export function Sidebar() {
             const token = await getToken();
             const { access_token } = await token.json();
             const categoriesData: Category[] = await getCategories(access_token);
-            console.log('categoriesData', categoriesData);
+            setcategoriesData(categoriesData);
             const mainCategories: Category[] = categoriesData.filter(cat => {
               return cat.ancestors.length === 0;
             });
@@ -55,30 +55,39 @@ export function Sidebar() {
             const subCategories: Category[] = categoriesData.filter(cat => {
               return cat.ancestors.length > 0;
             });
-            console.log('subCategories', subCategories);
             setSubCategories(subCategories);
             setCategoriesVisible(mainCategories);
-            console.log('mainCategories', mainCategories);
           }}
         >
           Show categories
         </button>
+        <li
+          className={styles.menuItem}
+          onClick={() => {
+            setCategoriesVisible(mainCategories);
+          }}
+        >
+          Main Categories
+        </li>
         {categoriesVisible.map(element => {
           return (
             <li
               key={element.id}
               className={styles.menuItem}
               onClick={() => {
-                console.log('subCategories', subCategories);
-                console.log('element.id', element.id);
                 const childCategories = filterSidebar(subCategories, element.id);
+
                 const visibleWithParent = [];
+                if (element.ancestors.length > 0) {
+                  const ancestorsList: Ancestors[] = element.ancestors;
+                  ancestorsList.forEach(ancestor =>
+                    visibleWithParent.push(categoriesData.filter(cat => cat.id === ancestor.id)[0]),
+                  );
+                }
                 visibleWithParent.push(element);
                 if (childCategories.length > 0) {
-                  for (let i in childCategories) {
-                    visibleWithParent.push(childCategories[i]);
-                  }
-                  setCategoriesVisible(childCategories);
+                  childCategories.forEach(el => visibleWithParent.push(el));
+                  setCategoriesVisible(visibleWithParent);
                 }
               }}
             >
