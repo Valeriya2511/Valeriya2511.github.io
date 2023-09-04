@@ -1,41 +1,14 @@
-import { useEffect, useState } from 'react';
-import { useProducts } from '../../hooks/products';
-import { Product } from '../../components/product/Product';
-import { Error } from '../../components/error/Error';
-import { Loading } from '../../components/loading/Loading';
-import { Modal } from '../../components/modal/Modal';
-import { CreateProduct } from '../../components/createProduct/CreateProduct';
-import { IPRODUCT } from '../../models';
+import { useContext, useEffect } from 'react';
 import { ProductCard } from '../../components/productCard/ProductCard';
 import styles from './ProductsPage.module.css';
-import { getToken } from '../../ecommerceAPI/getToken';
-import { getProducts } from '../../ecommerceAPI/getProducts';
+import { ProductsContext } from '../../context/productsContext/productsContext';
 import { Sidebar } from '../../components/sidebar/Sidebar';
 
 export function ProductsPage() {
-  const [products, setProducts] = useState([]);
-
-  const titles = [];
-  useEffect(() => {
-    console.log(products);
-  }, [products]);
+  const { products } = useContext(ProductsContext);
+  useEffect(() => {}, [products]);
   return (
     <div className={styles.container}>
-      <div style={{ width: '100%', textAlign: 'center', padding: '20px' }}>
-        <button
-          type="button"
-          onClick={async () => {
-            const token = await getToken();
-            const { access_token } = await token.json();
-            const productData = await getProducts(access_token);
-            const product = await productData.json();
-            setProducts(product.results);
-          }}
-        >
-          Show products
-        </button>
-        <div className={styles.twoColumnWrapper}></div>
-      </div>
       <div className={styles.sidebarColumn}>
         <Sidebar />
       </div>

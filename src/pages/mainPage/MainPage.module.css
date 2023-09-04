@@ -1,106 +1,100 @@
 .mainPages {
-	width: 100%;
-	height: 100vh;
-	background-image: url('./mainbg.jpg');
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-	color: white;
-	display: flex;
+  width: 100%;
+  background-image: url('./mainbg.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: white;
+  display: flex;
 }
 
 .container {
-	max-width: 1000px;
-	padding: 50px;
-	text-align: center;
-	height: 100%;
+  max-width: 1000px;
+  padding: 50px;
+  text-align: center;
+  height: 100%;
 }
 
 .title {
-	font-size: 100px;
+  font-size: 100px;
 }
 
 .greetings {
-	font-size: 30px;
-	text-align: start;
+  font-size: 30px;
+  text-align: start;
 }
 
 .itemlist {
-	margin-top: 50px;
-	color:#f06600;
-	font-size: 40px;
-	font-weight: 600;
-	-webkit-text-stroke: 1px #FFFFFF;
+  margin-top: 50px;
+  color: #f06600;
+  font-size: 40px;
+  font-weight: 600;
+  -webkit-text-stroke: 1px #ffffff;
 }
 
 .list {
-	padding-inline-start: 0px;
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	gap: 40px;
+  padding-inline-start: 0px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
 }
 
 .item {
-	width: 70px;
-	height: 70px;
-	background-color: #ffffff;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: 100%;
-	border: 3px solid #f06600;
-	border-radius: 10px;
+  width: 70px;
+  height: 70px;
+  background-color: #ffffff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  border: 3px solid #f06600;
+  border-radius: 10px;
 }
 
 .jacket {
-	background-image: url('./jacket.png');
+  background-image: url('./jacket.png');
 }
 
-.bag{
-	background-image: url('./bag.png');
+.bag {
+  background-image: url('./bag.png');
 }
 
-.shirt{
-	background-image: url('./shirt.png');
+.shirt {
+  background-image: url('./shirt.png');
 }
 
-.shoes{
-	background-image: url('./shoes.png');
+.shoes {
+  background-image: url('./shoes.png');
 }
 
-.ring{
-	background-image: url('./ring.png');
+.ring {
+  background-image: url('./ring.png');
 }
 
-.scarf{
-	background-image: url('./scarf.png');
+.scarf {
+  background-image: url('./scarf.png');
 }
 
 .wallet {
-	background-image: url('./wallet.png');
+  background-image: url('./wallet.png');
 }
 
 .belt {
-	background-image: url('./belt.png');
+  background-image: url('./belt.png');
 }
 
 .dress {
-	background-image: url('./dress.png');
+  background-image: url('./dress.png');
 }
 
-.jeans{
-	background-image: url('./jeans.png');
+.jeans {
+  background-image: url('./jeans.png');
 }
 
 .cap {
-	background-image: url('./cap.png');
+  background-image: url('./cap.png');
 }
 
 .glasses {
-	background-image: url('./glasses.png');
+  background-image: url('./glasses.png');
 }
-
-
-
-
-

@@ -57,11 +57,11 @@ export function ProductCard({ product }: any) {
           <li className={styles.options}>{`Color: ${productDataObject.color}`}</li>
           <li className={styles.options}>{`Cat: ${productDataObject.categorie}`}</li>
         </ul>
-        <Link className={styles.link} to="/basket">
-          <button className={styles.btn} onClick={cartHandler}>
-            add to <img className={styles.iconsvg} src="/cart.svg" alt="cart" />
-          </button>
-        </Link>
+        {/* <Link className={styles.link} to="/basket"> */}
+        <button className={styles.btn} onClick={cartHandler}>
+          add to <img className={styles.iconsvg} src="/cart.svg" alt="cart" />
+        </button>
+        {/* </Link> */}
       </div>
     </Link>
   );
