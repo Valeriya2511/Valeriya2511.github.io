@@ -4,3 +4,19 @@
   justify-content: center;
   background-color: rgb(255, 255, 255);
 }
+
+.twoColumnWrapper {
+  display: flex;
+}
+
+.sidebarColumn {
+  display: flex;
+  width: 20%;
+}
+
+.productsColumn {
+  display: flex;
+  width: 80%;
+  flex-wrap: wrap;
+  justify-content: center;
+}

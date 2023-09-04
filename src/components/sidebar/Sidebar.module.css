@@ -1,0 +1,49 @@
+.sidebar {
+  background-color: #267ea3de;
+  width: 100%;
+  display: flex;
+  flex: column;
+  gap: 5px;
+  justify-content: center;
+}
+.button {
+  background-color: #ee971c;
+}
+
+.menuList {
+  width: 100%;
+  margin: 5px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.menuItem {
+  background-color: #009688;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  box-shadow: 0px 0px 7px 0px #fff;
+  color: #fff;
+  font-size: 1rem;
+  font-family: Verdana, sans-serif;
+  width: 100%;
+  padding: 3px;
+}
+
+.menuItem:hover,
+.menuItem::after {
+  background-color: #ee971c;
+}
+
+.menuItemAncestor {
+  background-color: #009688;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  box-shadow: 0px 0px 7px 0px #fff;
+  color: #ee971c;
+  font-size: 1rem;
+  font-family: Verdana, sans-serif;
+  width: 100%;
+  padding: 3px;
+}

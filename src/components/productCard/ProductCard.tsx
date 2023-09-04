@@ -6,20 +6,36 @@ import { Link } from 'react-router-dom';
 // }
 
 export function ProductCard({ product }: any) {
+  let catList: any = [];
+  for (let i in product.masterData.current.categories) {
+    catList.push(product.masterData.current.categories[i].id);
+  }
   const productDataObject = {
     name: `${product.masterData.current.name.en}`,
     imageURL: `${product.masterData.current.masterVariant.images[0].url}`,
-    price: 345,
-    productId: '85574',
-    brand: 'Coton',
-    color: 'green',
-    size: 'L',
-    description: 'bla bla bla',
-    categorie: 'clothes',
-    subcategorie: 'sjhskjvskjnvs',
+    price: `${product.masterData.current.masterVariant.prices[2].value.centAmount / 100}`,
+    productId: '',
+    brand: '',
+    color: '',
+    size: '',
+    description: 'bla-bla-bla',
+    categorie: catList.join('/ '),
     currency: 'USD',
     discount: '-10%',
   };
+  const attributList = product.masterData.current.masterVariant.attributes;
+
+  for (let i in attributList) {
+    if (attributList[i].name === 'color') {
+      productDataObject.color = attributList[i].value.label.en;
+    }
+    if (attributList[i].name === 'size') {
+      productDataObject.size = attributList[i].value;
+    }
+    if (attributList[i].name === 'designer') {
+      productDataObject.brand = attributList[i].value.label;
+    }
+  }
 
   const cartHandler = () => {
     console.log('добавить товар в корзину');
@@ -39,9 +55,7 @@ export function ProductCard({ product }: any) {
         <h2 className={styles.price}>{`${productDataObject.price} ${productDataObject.currency}`}</h2>
         <ul className={styles.optionsList}>
           <li className={styles.options}>{`Color: ${productDataObject.color}`}</li>
-          <li className={styles.options}>{`Cat: ${productDataObject.categorie}/ Subcat: ${
-            productDataObject.subcategorie || '-'
-          }`}</li>
+          <li className={styles.options}>{`Cat: ${productDataObject.categorie}`}</li>
         </ul>
         <Link className={styles.link} to="/basket">
           <button className={styles.btn} onClick={cartHandler}>
