@@ -1,93 +1,85 @@
-li, .footerlist {
-	list-style-type: none;
-	color: #009688;
-	font-size: 25px;
-	font-weight: 500;
-	position: relative;
+.footerlist {
+  list-style-type: none;
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
 }
 .footerlist:after {
-	content: "";
-    display: block;
-    position: absolute;
-    right: 0;
-    bottom: -3px;
-    width: 0;
-    height: 2px; /* Высота линии */
-    background-color: #009485; /* Цвет подчеркивания при исчезании линии*/
-    transition: width 0.5s; /* Время эффекта */
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px; /* Высота линии */
+  background-color: #009485; /* Цвет подчеркивания при исчезании линии*/
+  transition: width 0.5s; /* Время эффекта */
 }
 
 .footerlist:hover:after {
-	content: "";
-    width: 100%;
-    display: block;
-    position: absolute;
-    left: 0;
-    bottom: -3px;
-    height: 2px; /* Высота линии */
-    background-color: #F06600; /* Цвет подчеркивания при появлении линии*/
-    transition: width 0.5s;  /* Время эффекта */
+  content: '';
+  width: 100%;
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 2px; /* Высота линии */
+  background-color: #f06600; /* Цвет подчеркивания при появлении линии*/
+  transition: width 0.5s; /* Время эффекта */
 }
 
-a {
-	display: flex;
-	align-items: center;
-	margin-left: 50px;
+.footerLink {
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
+  color: #009485;
 }
 .footerlist:hover {
-	color: #F06600;
+  color: #f06600;
 }
 
-span {
-	display: block;
-	width: 25px;
-	height: 25px;
-	background-size: 100%;
-	background-position: center;
-	background-repeat: no-repeat;
-	margin-right: 10px;
-}
-
-ul {
-	margin: 0;
+.span {
+  display: block;
+  width: 25px;
+  height: 25px;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-right: 10px;
 }
 
 .footer {
-	width: 100%;
-	height: 80px;
-	margin-top: -80px;
-	background: white;
-	color: #009688;
-	padding: 0 50px;
-	display: flex;
-	justify-content: space-between;
+  width: 100%;
+  height: 80px;
+  background: white;
+  color: #009688;
+  padding: 0 50px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .law {
-	padding-top: 10px;
-	margin: 0;
+  padding-top: 10px;
+  margin: 0;
 }
 
 .list {
-	padding-inline-start: 0px;
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	height: 100%;
+  padding-inline-start: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
 }
 
 .itel {
-	background-image: url('./tel.png');
+  background-image: url('./tel.png');
 }
 
 .iloc {
-	background-image: url('./loc.png');
+  background-image: url('./loc.png');
 }
 
 .imail {
-	background-image: url('./mail.png');
+  background-image: url('./mail.png');
 }
-
-
-
-

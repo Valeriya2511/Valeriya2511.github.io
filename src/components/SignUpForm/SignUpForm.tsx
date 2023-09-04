@@ -6,10 +6,14 @@ import { useAutorization } from '../../hooks/useAutorization/useAutorization';
 import { getToken } from '../../ecommerceAPI/getToken';
 import { postClient } from '../../ecommerceAPI/postCustomers';
 import { AuthContext } from '../../context/authContext/AuthContext';
+import { Navigate } from 'react-router-dom';
 
 export default function SignUpForm() {
   const { submitHandler } = useAutorization();
-  const { setIsAuth } = useContext(AuthContext);
+  const { isAuth, setIsAuth } = useContext(AuthContext);
+  if (isAuth) {
+    return <Navigate replace to="/main" />;
+  }
   return (
     <form
       onSubmit={async event => {
