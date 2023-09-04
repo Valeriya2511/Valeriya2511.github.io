@@ -59,10 +59,10 @@ export function Sidebar() {
             setCategoriesVisible(mainCategories);
           }}
         >
-          Show categories
+          Get categories from API
         </button>
         <li
-          className={styles.menuItem}
+          className={styles.menuItemAncestor}
           onClick={() => {
             setCategoriesVisible(mainCategories);
           }}
@@ -76,7 +76,6 @@ export function Sidebar() {
               className={styles.menuItem}
               onClick={() => {
                 const childCategories = filterSidebar(subCategories, element.id);
-
                 const visibleWithParent = [];
                 if (element.ancestors.length > 0) {
                   const ancestorsList: Ancestors[] = element.ancestors;
