@@ -1,7 +1,7 @@
 export const getCategories = async (token: string) => {
   
   const data = await fetch(
-    'https://api.australia-southeast1.gcp.commercetools.com/ecommerce-application_1/categories?limit=102',
+    'https://api.australia-southeast1.gcp.commercetools.com/ecommerce-application_1/categories?limit=110',
     {
       method: 'GET',
       headers: {

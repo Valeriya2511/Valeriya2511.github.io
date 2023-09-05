@@ -5,10 +5,13 @@ import { AuthContext } from '../../context/authContext/AuthContext';
 import { getToken } from '../../ecommerceAPI/getToken';
 import { getProducts } from '../../ecommerceAPI/getProducts';
 import { ProductsContext } from '../../context/productsContext/productsContext';
+import { CategoriesContext } from '../../context/categoriesContext/CategoriesContext';
+import { getCategories } from '../../ecommerceAPI/getCategories';
 
 export function Navigation() {
   const { isAuth, setIsAuth } = useContext(AuthContext);
   const { setProducts } = useContext(ProductsContext);
+  const { setCategories } = useContext(CategoriesContext);
 
   return (
     <nav className={styles.navigation}>
@@ -24,6 +27,8 @@ export function Navigation() {
               const productData = await getProducts(access_token);
               const product = await productData.json();
               setProducts(await product.results);
+              const categoriesData = await getCategories(access_token);
+              setCategories(categoriesData);
             }}
             className={styles.link}
             to="/products"
