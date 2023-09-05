@@ -1,43 +1,24 @@
-import React, { useState } from 'react';
-import { useProducts } from '../../hooks/products';
-import { Product } from '../../components/product/Product';
-import { Error } from '../../components/error/Error';
-import { Loading } from '../../components/loading/Loading';
-import { Modal } from '../../components/modal/Modal';
-import { CreateProduct } from '../../components/createProduct/CreateProduct';
-import { IPRODUCT } from '../../models';
+import { useContext, useEffect } from 'react';
+import { ProductCard } from '../../components/productCard/ProductCard';
+import styles from './ProductsPage.module.css';
+import { ProductsContext } from '../../context/productsContext/productsContext';
+import { Sidebar } from '../../components/sidebar/Sidebar';
+
 export function ProductsPage() {
-  const { products, error, load, addProduct } = useProducts();
-  const [modal, setModal] = useState(false);
-
-  const createHandler = (product: IPRODUCT) => {
-    setModal(false);
-    addProduct(product);
-  };
+  const { products } = useContext(ProductsContext);
+  useEffect(() => {}, [products]);
   return (
-    <div className="container mx-auto max-w-2xl pt-5">
-      <h1 className="text-center text-2xl mb-4">Some title</h1>
-
-      {load && <Loading />}
-      {error && <Error error={error} />}
-
-      <div className="productList flex flex-wrap gap-4 justify-center">
-        {products.map(product => (
-          <Product product={product} key={product.id} />
-        ))}
+    <div className={styles.container}>
+      <div className={styles.sidebarColumn}>
+        <Sidebar />
       </div>
-      {modal && (
-        <Modal title={'Create new product'} onClose={() => setModal(false)}>
-          <CreateProduct onCreate={createHandler} />
-        </Modal>
-      )}
-      <button
-        type="button"
-        className="py-2 px-4 border bg-green-400 block mx-auto hover:bg-gray-400"
-        onClick={() => setModal(true)}
-      >
-        Show modal window
-      </button>
+      <div className={styles.productsColumn}>
+        {products.length &&
+          products.map((element, index) => {
+            const { id } = element;
+            return <ProductCard product={element} key={id} />;
+          })}
+      </div>
     </div>
   );
 }

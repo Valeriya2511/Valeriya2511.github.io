@@ -42,3 +42,36 @@ export const getToken = async () => {
 // )
 //   .then(res => res.json())
 //   .then(data => console.log(data));
+
+// fetch('https://api.australia-southeast1.gcp.commercetools.com/ecommerce-application_1/products?limit=30', {
+//   method: 'GET',
+//   headers: {
+//     Authorization: 'Bearer jznt4UoyAd7ijzcaiQ2lC4lOej5JcZ-u',
+//     'Content-Type': 'application/x-www-form-urlencoded',
+//   },
+// })
+//   .then(res => res.json())
+//   .then(data => console.log(data));
+
+// fetch('https://api.australia-southeast1.gcp.commercetools.com/ecommerce-application_1/customers', {
+//   method: 'GET',
+//   headers: {
+//     Authorization: 'Bearer ...',
+//     'Content-Type': 'application/x-www-form-urlencoded',
+//   },
+// })
+//   .then(res => res.json())
+//   .then(data => console.log(data.results));
+
+// fetch('https://api.australia-southeast1.gcp.commercetools.com/ecommerce-application_1/login', {
+//   method: 'POST',
+//   headers: {
+//     Authorization: 'Bearer qrvNs61jpRLXA3CpP237dtG-RHQQlzSd',
+//     'Content-Type': 'application/x-www-form-urlencoded',
+//   },
+//   body: JSON.stringify({
+//     email: 'vasyaName@mail.ru',
+//     password: 'TTss@@22',
+//   }),
+// })
+//   .then(res => console.log(res.status));

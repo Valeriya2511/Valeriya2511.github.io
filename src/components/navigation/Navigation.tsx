@@ -1,48 +1,61 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Navigation.module.css';
 import { AuthContext } from '../../context/authContext/AuthContext';
+import { getToken } from '../../ecommerceAPI/getToken';
+import { getProducts } from '../../ecommerceAPI/getProducts';
+import { ProductsContext } from '../../context/productsContext/productsContext';
 
 export function Navigation() {
   const { isAuth, setIsAuth } = useContext(AuthContext);
+  const { setProducts } = useContext(ProductsContext);
 
-  const changeAuth = (isAuth: boolean) => {
-    isAuth ? setIsAuth(false) : setIsAuth(true);
-  };
   return (
     <nav className={styles.navigation}>
-      <button onClick={() => changeAuth(isAuth)}>isAuth</button>
       {isAuth ? (
         <>
           <Link className={styles.link} to="/main">
             Main
           </Link>
-          <Link className={styles.link} to="/products">
+          <Link
+            onClick={async () => {
+              const token = await getToken();
+              const { access_token } = await token.json();
+              const productData = await getProducts(access_token);
+              const product = await productData.json();
+              setProducts(await product.results);
+            }}
+            className={styles.link}
+            to="/products"
+          >
             Catalog
           </Link>
           <Link className={styles.link} to="/about">
             About
           </Link>
-          <Link className={styles.link} to="/basket">
-            Basket
+          <Link className={styles.linkIcon} to="/basket">
+            <div className={styles.imgCont}>
+              <img className={styles.iconsvg} src="/cart.svg" alt="basket" />
+            </div>
           </Link>
-          <Link className={styles.link} to="/UserPage">
-            <img className={styles.userImg} src="./user-auth.jpg" alt="user" />
+          <Link className={styles.linkIcon} to="/UserPage">
+            <div className={styles.imgCont}>
+              <img className={styles.iconsvg} src="./user-auth.svg" alt="user" />
+            </div>
           </Link>
-          <Link className={styles.link} to="/">
-            Logout
+          <Link className={styles.linkIcon} to="/" onClick={() => setIsAuth(false)}>
+            <div className={styles.imgCont}>
+              <img className={styles.iconsvg} src="/logout.svg" alt="" />
+            </div>
           </Link>
         </>
       ) : (
         <>
           <Link className={styles.link} to="/">
-            Login
+            Login/Sign Up
           </Link>
           <Link className={styles.link} to="/main">
             Main
-          </Link>
-          <Link className={styles.link} to="/registration">
-            SignUp
           </Link>
         </>
       )}
