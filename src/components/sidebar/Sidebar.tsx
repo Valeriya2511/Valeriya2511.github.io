@@ -47,7 +47,6 @@ export function Sidebar() {
   const [categoriesVisible, setCategoriesVisible] = useState(mainCategories);
   useEffect(() => {
     setCategoriesVisible(mainCategories);
-    console.log('useEffect Sidebar');
   }, [categories]);
   const [visibleUnvisible, setVisibleUnvisible] = useState(styles.unvisible);
 
