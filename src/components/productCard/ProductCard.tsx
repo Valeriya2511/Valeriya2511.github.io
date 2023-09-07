@@ -5,15 +5,11 @@ import { CategoriesContext } from '../../context/categoriesContext/CategoriesCon
 import { findAllByAltText } from '@testing-library/react';
 import { Category } from '../sidebar/Sidebar';
 
-// interface productDataObject {
-//   product: {};
-// }
-
 export function ProductCard({ product }: any) {
   const { categories } = useContext(CategoriesContext);
   const categoriesArray: Category[] = categories;
   const catList: string[] = [];
-  for (let cat of product.masterData.current.categories) {
+  for (const cat of product.masterData.current.categories) {
     const res: Category | undefined = categoriesArray.find(el => el.id === cat.id);
     if (res) {
       catList.push(res.name.en);
