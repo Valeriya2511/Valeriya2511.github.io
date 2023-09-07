@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useContext } from 'react';
 import styles from './Sidebar.module.css';
-import { getCategories } from '../../ecommerceAPI/getCategories';
-import { getToken } from '../../ecommerceAPI/getToken';
+import { CategoriesContext } from '../../context/categoriesContext/CategoriesContext';
 
-interface Category {
+export interface Category {
   ancestors: [];
   assets: [];
   createdAt: string;
@@ -26,48 +25,42 @@ interface Ancestors {
   typeId: string;
   id: string;
 }
+
 function filterSidebar(catList: Category[], parentId: string) {
   const res = catList.filter(cat => {
     return cat.parent.id === parentId;
   });
   return res;
 }
+
 export function Sidebar() {
-  const [categoriesVisible, setCategoriesVisible] = useState<Category[]>([]);
-  const [categoriesData, setcategoriesData] = useState<Category[]>([]);
-  const [mainCategories, setMainCategories] = useState<Category[]>([]);
-  const [subCategories, setSubCategories] = useState<Category[]>([]);
+  const { categories } = useContext(CategoriesContext);
+  // const [categoriesData, setcategoriesData] = useState<Category[]>([]);
+  // setcategoriesData(categories);
+  const categoriesData: Category[] = categories;
+  const mainCategories = categoriesData.filter(cat => {
+    return cat.ancestors.length === 0;
+  });
+  const subCategories: Category[] = categoriesData.filter(cat => {
+    return cat.ancestors.length > 0;
+  });
+  const [categoriesVisible, setCategoriesVisible] = useState(mainCategories);
+  useEffect(() => {
+    setCategoriesVisible(mainCategories);
+  }, [categories]);
+  const [visibleUnvisible, setVisibleUnvisible] = useState(styles.unvisible);
+
   return (
     <section className={styles.sidebar}>
       <ul className={styles.menuList}>
-        <button
-          className={styles.button}
-          type="button"
-          onClick={async () => {
-            const token = await getToken();
-            const { access_token } = await token.json();
-            const categoriesData: Category[] = await getCategories(access_token);
-            setcategoriesData(categoriesData);
-            const mainCategories: Category[] = categoriesData.filter(cat => {
-              return cat.ancestors.length === 0;
-            });
-            setMainCategories(mainCategories);
-            const subCategories: Category[] = categoriesData.filter(cat => {
-              return cat.ancestors.length > 0;
-            });
-            setSubCategories(subCategories);
-            setCategoriesVisible(mainCategories);
-          }}
-        >
-          Get categories from API
-        </button>
         <li
-          className={styles.menuItemAncestor}
+          className={`${styles.menuBackToMain} ${visibleUnvisible}`}
           onClick={() => {
             setCategoriesVisible(mainCategories);
+            setVisibleUnvisible(styles.unvisible);
           }}
         >
-          Main Categories
+          Back to Main Categories
         </li>
         {categoriesVisible.map(element => {
           return (
@@ -77,6 +70,7 @@ export function Sidebar() {
               onClick={() => {
                 const childCategories = filterSidebar(subCategories, element.id);
                 const visibleWithParent = [];
+                setVisibleUnvisible(styles.visible);
                 if (element.ancestors.length > 0) {
                   const ancestorsList: Ancestors[] = element.ancestors;
                   ancestorsList.forEach(ancestor =>

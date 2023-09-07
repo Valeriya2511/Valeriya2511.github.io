@@ -36,7 +36,7 @@
   background-color: #ee971c;
 }
 
-.menuItemAncestor {
+.menuBackToMain {
   background-color: #009688;
   border: 1px solid #fff;
   border-radius: 3px;
@@ -46,4 +46,11 @@
   font-family: Verdana, sans-serif;
   width: 100%;
   padding: 3px;
+}
+
+.visible {
+  display: inline;
+}
+.unvisible {
+  display: none;
 }

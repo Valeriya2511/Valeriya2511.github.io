@@ -1,15 +1,25 @@
 import styles from './ProductCard.module.css';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { CategoriesContext } from '../../context/categoriesContext/CategoriesContext';
+import { findAllByAltText } from '@testing-library/react';
+import { Category } from '../sidebar/Sidebar';
 
 // interface productDataObject {
 //   product: {};
 // }
 
 export function ProductCard({ product }: any) {
-  let catList: any = [];
-  for (let i in product.masterData.current.categories) {
-    catList.push(product.masterData.current.categories[i].id);
+  const { categories } = useContext(CategoriesContext);
+  const categoriesArray: Category[] = categories;
+  const catList: string[] = [];
+  for (let cat of product.masterData.current.categories) {
+    const res: Category | undefined = categoriesArray.find(el => el.id === cat.id);
+    if (res) {
+      catList.push(res.name.en);
+    }
   }
+
   const productDataObject = {
     name: `${product.masterData.current.name.en}`,
     imageURL: `${product.masterData.current.masterVariant.images[0].url}`,

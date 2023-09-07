@@ -3,4 +3,7 @@ export interface IProdContext {
   products: [];
   setProducts: (products: []) => void;
 }
-export const ProductsContext = createContext({ products: [], setProducts: (products: []) => {} });
+export const ProductsContext = createContext({
+  products: [],
+  setProducts: (products: []) => {},
+});
