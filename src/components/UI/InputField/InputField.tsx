@@ -9,8 +9,17 @@ export interface InputFieldProps {
 
 export default function InputField({ type, name, placeholder }: InputFieldProps) {
   const [value, setValue] = useState('');
+  function autoFill(event: React.FocusEvent<HTMLInputElement>) {
+    if (type === 'email') {
+      setValue(`${localStorage.key(0)}`);
+    }
+    if (type === 'password') {
+      setValue(`${localStorage.getItem(String(localStorage.key(0)))}`);
+    }
+  }
   function validate(event: React.ChangeEvent<HTMLInputElement>) {
     setValue(event.target.value.trim());
+
     if (type === 'email') {
       if (!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/u.test(value)) {
         event.currentTarget.setCustomValidity('I am expecting an e-mail address!');
@@ -46,6 +55,7 @@ export default function InputField({ type, name, placeholder }: InputFieldProps)
         className={styles.inputField}
         required={true}
         value={value}
+        onFocus={autoFill}
         onChange={validate}
       />
     </>
