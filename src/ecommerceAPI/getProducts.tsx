@@ -3,7 +3,7 @@ export const getProducts = async (token: string) => {
   // console.log(client, token);
 
   const data = await fetch(
-    'https://api.australia-southeast1.gcp.commercetools.com/ecommerce-application_1/products?limit=30',
+    'https://api.australia-southeast1.gcp.commercetools.com/ecommerce-application_1/products?limit=30&&offset=30',
     {
       method: 'GET',
       headers: {
@@ -25,6 +25,5 @@ export const getProducts = async (token: string) => {
   // }
   // ),
   // );
-
   return await data;
 };

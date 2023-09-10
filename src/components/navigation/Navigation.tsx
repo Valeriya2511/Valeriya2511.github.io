@@ -26,8 +26,9 @@ export function Navigation() {
               const { access_token } = await token.json();
               const productData = await getProducts(access_token);
               const product = await productData.json();
-              setProducts(await product.results);
+              setProducts(product.results);
               const categoriesData = await getCategories(access_token);
+              localStorage.setItem('access_token', access_token);
               setCategories(categoriesData);
             }}
             className={styles.link}

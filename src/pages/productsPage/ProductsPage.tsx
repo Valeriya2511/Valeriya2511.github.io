@@ -6,18 +6,24 @@ import { Sidebar } from '../../components/sidebar/Sidebar';
 
 export function ProductsPage() {
   const { products } = useContext(ProductsContext);
-  useEffect(() => {}, [products]);
+  useEffect(() => {
+    console.log('useEffect products ProdPage', products);
+  }, [products]);
+
   return (
     <div className={styles.container}>
       <div className={styles.sidebarColumn}>
         <Sidebar />
       </div>
       <div className={styles.productsColumn}>
-        {products.length &&
+        {products.length ? (
           products.map((element, index) => {
             const { id } = element;
             return <ProductCard product={element} key={id} />;
-          })}
+          })
+        ) : (
+          <img src="./SoldOut.jpg" alt="Sold Out"></img>
+        )}
       </div>
     </div>
   );
