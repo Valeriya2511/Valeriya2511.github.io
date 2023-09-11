@@ -54,7 +54,6 @@ function addToProducts(currentList: IProduct[]) {
     };
     return product;
   });
-  console.log(resList);
   return resList;
 }
 

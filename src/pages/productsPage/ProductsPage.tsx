@@ -6,9 +6,7 @@ import { Sidebar } from '../../components/sidebar/Sidebar';
 
 export function ProductsPage() {
   const { products } = useContext(ProductsContext);
-  useEffect(() => {
-    console.log('useEffect products ProdPage', products);
-  }, [products]);
+  useEffect(() => {}, [products]);
 
   return (
     <div className={styles.container}>
