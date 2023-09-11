@@ -1,0 +1,13 @@
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding-bottom: 10px;
+}
+
+.pagination button {
+  text-align: center;
+  padding: 10px 15px;
+  cursor: pointer;
+}

@@ -1,13 +1,14 @@
 import InputField from '../UI/InputField/InputField';
 import ButtonAutorization from '../UI/ButtonAutorization/ButtonAutorization';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useAutorization } from '../../hooks/useAutorization/useAutorization';
 import { AuthContext } from '../../context/authContext/AuthContext';
 import { Navigate } from 'react-router-dom';
 import { getToken } from '../../ecommerceAPI/getToken';
-import { isLogin, storageUser } from '../../ecommerceAPI/isLogin';
+import { isLogin } from '../../ecommerceAPI/isLogin';
 
 export default function LoginForm() {
+  const [isDisabled, setIsDisabled] = useState(true);
   const { submitHandler } = useAutorization();
   const { isAuth, setIsAuth } = useContext(AuthContext);
 
@@ -35,15 +36,16 @@ export default function LoginForm() {
           alert('The user with this username or password was not found. Please check the data.');
         }
       }}
+      autoComplete="off"
     >
       <p>
-        <InputField type="email" name="email" placeholder="Login email" />
+        <InputField type="email" name="email" placeholder="Login email" isDisabled={setIsDisabled} />
       </p>
       <p>
-        <InputField type="password" name="password" placeholder="Password" />
+        <InputField type="password" name="password" placeholder="Password" isDisabled={setIsDisabled} />
       </p>
       <p>
-        <ButtonAutorization type="submit" children="Login" />
+        <ButtonAutorization type="submit" children="Login" disabled={isDisabled} />
       </p>
     </form>
   );
