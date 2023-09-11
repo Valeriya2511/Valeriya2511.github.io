@@ -1,6 +1,6 @@
-export const getCategories = async (token: string) => {
+export const SelectByCategoryID = async (categoryID: string, token: string) => {
   const data = await fetch(
-    'https://api.australia-southeast1.gcp.commercetools.com/ecommerce-application_1/categories?limit=110',
+    `https://api.australia-southeast1.gcp.commercetools.com/ecommerce-application_1/product-projections/search?filter=categories.id:"${categoryID}"`,
     {
       method: 'GET',
       headers: {

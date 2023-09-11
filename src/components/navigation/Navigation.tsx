@@ -7,6 +7,7 @@ import { getProducts } from '../../ecommerceAPI/getProducts';
 import { ProductsContext } from '../../context/productsContext/productsContext';
 import { CategoriesContext } from '../../context/categoriesContext/CategoriesContext';
 import { getCategories } from '../../ecommerceAPI/getCategories';
+import { IRowProduct } from '../interface/IRowProduct';
 
 export function Navigation() {
   const { isAuth, setIsAuth } = useContext(AuthContext);
@@ -26,8 +27,10 @@ export function Navigation() {
               const { access_token } = await token.json();
               const productData = await getProducts(access_token);
               const product = await productData.json();
-              setProducts(await product.results);
+              const productList: IRowProduct[] = product.results;
+              setProducts(productList);
               const categoriesData = await getCategories(access_token);
+              localStorage.setItem('access_token', access_token);
               setCategories(categoriesData);
             }}
             className={styles.link}

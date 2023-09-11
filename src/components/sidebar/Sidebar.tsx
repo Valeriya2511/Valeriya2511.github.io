@@ -1,6 +1,13 @@
 import { useEffect, useState, useRef, useContext } from 'react';
 import styles from './Sidebar.module.css';
 import { CategoriesContext } from '../../context/categoriesContext/CategoriesContext';
+import { SelectByCategoryID } from '../../ecommerceAPI/SelectByCategoryID';
+import { ProductsContext } from '../../context/productsContext/productsContext';
+import { IProduct } from '../interface/IProduct';
+import { IAncestor } from '../interface/IAncestor';
+import { IRowProduct } from '../interface/IRowProduct';
+import { getProducts } from '../../ecommerceAPI/getProducts';
+import { getToken } from '../../ecommerceAPI/getToken';
 
 export interface Category {
   ancestors: [];
@@ -21,11 +28,6 @@ export interface Category {
   versionModifiedAt: string;
 }
 
-interface Ancestors {
-  typeId: string;
-  id: string;
-}
-
 function filterSidebar(catList: Category[], parentId: string) {
   const res = catList.filter(cat => {
     return cat.parent.id === parentId;
@@ -33,11 +35,33 @@ function filterSidebar(catList: Category[], parentId: string) {
   return res;
 }
 
+function addToProducts(currentList: IProduct[]) {
+  const resList: [] | IRowProduct[] = currentList.map(currentProd => {
+    const product = {
+      createdAt: '',
+      createdBy: { clientId: '', isPlatformClient: false },
+      id: `${currentProd.id}`,
+      key: `${currentProd.key}`,
+      lastMessageSequenceNumber: 1,
+      lastModifiedAt: '',
+      lastModifiedBy: { clientId: '', isPlatformClient: false },
+      lastVariantId: 1,
+      masterData: { current: currentProd, staged: {}, published: true, hasStagedChanges: false },
+      productType: { typeId: '', id: '' },
+      taxCategory: { typeId: '', id: '' },
+      version: 1,
+      versionModifiedAt: '',
+    };
+    return product;
+  });
+  return resList;
+}
+
 export function Sidebar() {
   const { categories } = useContext(CategoriesContext);
-  // const [categoriesData, setcategoriesData] = useState<Category[]>([]);
-  // setcategoriesData(categories);
+  const { setProducts } = useContext(ProductsContext);
   const categoriesData: Category[] = categories;
+  // console.log('categoriesData', categoriesData);
   const mainCategories = categoriesData.filter(cat => {
     return cat.ancestors.length === 0;
   });
@@ -49,15 +73,26 @@ export function Sidebar() {
     setCategoriesVisible(mainCategories);
   }, [categories]);
   const [visibleUnvisible, setVisibleUnvisible] = useState(styles.unvisible);
-
   return (
     <section className={styles.sidebar}>
       <ul className={styles.menuList}>
         <li
           className={`${styles.menuBackToMain} ${visibleUnvisible}`}
-          onClick={() => {
+          onClick={async () => {
             setCategoriesVisible(mainCategories);
             setVisibleUnvisible(styles.unvisible);
+            const token = localStorage.getItem('access_token');
+            if (!token) {
+              const rowToken = await getToken();
+              const { access_token } = await rowToken.json();
+              const productData = await getProducts(access_token);
+              const product = await productData.json();
+              setProducts(product.results);
+            } else {
+              const productData = await getProducts(token);
+              const product = await productData.json();
+              setProducts(product.results);
+            }
           }}
         >
           Back to Main Categories
@@ -67,12 +102,18 @@ export function Sidebar() {
             <li
               key={element.id}
               className={styles.menuItem}
-              onClick={() => {
+              onClick={async () => {
+                const token = localStorage.getItem('access_token');
+                if (token) {
+                  const prod = await SelectByCategoryID(element.id, token);
+                  const newProductList = addToProducts(prod);
+                  setProducts(newProductList);
+                }
                 const childCategories = filterSidebar(subCategories, element.id);
                 const visibleWithParent = [];
                 setVisibleUnvisible(styles.visible);
                 if (element.ancestors.length > 0) {
-                  const ancestorsList: Ancestors[] = element.ancestors;
+                  const ancestorsList: IAncestor[] = element.ancestors;
                   ancestorsList.forEach(ancestor =>
                     visibleWithParent.push(categoriesData.filter(cat => cat.id === ancestor.id)[0]),
                   );
