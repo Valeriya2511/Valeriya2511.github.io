@@ -4,12 +4,11 @@ import React, { useContext, useState } from 'react';
 import { useAutorization } from '../../hooks/useAutorization/useAutorization';
 import { AuthContext } from '../../context/authContext/AuthContext';
 import { Navigate } from 'react-router-dom';
-import { getToken } from '../../ecommerceAPI/getToken';
 import { isLogin } from '../../ecommerceAPI/isLogin';
 
 export default function LoginForm() {
   const [isDisabled, setIsDisabled] = useState(true);
-  const { submitHandler } = useAutorization();
+  const { submitHandler, saveToken } = useAutorization();
   const { isAuth, setIsAuth } = useContext(AuthContext);
 
   if (isAuth) {
@@ -20,9 +19,9 @@ export default function LoginForm() {
     <form
       onSubmit={async event => {
         const userData = await submitHandler(event);
-        const tokenData = await getToken();
-        const { access_token } = await tokenData.json();
-        const status = await isLogin(userData, access_token);
+        await saveToken(event);
+        const token = await localStorage.getItem('access_token');
+        const status = await isLogin(userData, `${token}`);
         const user = await status.json();
 
         if ((await String(status.status)) === '200') {
