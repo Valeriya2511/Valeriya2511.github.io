@@ -47,3 +47,15 @@
 .linkIcon:focus {
   background-color: #ee971c;
 }
+
+.products{
+  position: absolute;
+  background-color: #ee971c;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  padding-top: 6px;
+  top: 0;
+  transform: translateX(20px) translateY(5px);
+}
