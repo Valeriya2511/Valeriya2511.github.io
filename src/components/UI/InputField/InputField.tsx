@@ -60,12 +60,12 @@ export default function InputField({ type, name, placeholder, isDisabled }: Inpu
     }
   }
   function autoFill(event: React.FocusEvent<HTMLInputElement>) {
-    if (localStorage.length) {
+    if (localStorage.getItem('email') !== null) {
       if (type === 'email') {
-        setValue(`${localStorage.key(0)}`);
+        setValue(`${localStorage.getItem('email')}`);
       }
       if (type === 'password') {
-        setValue(`${localStorage.getItem(String(localStorage.key(0)))}`);
+        setValue(`${localStorage.getItem('password')}`);
         isDisabled(false);
       }
     }
