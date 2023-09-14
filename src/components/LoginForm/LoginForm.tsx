@@ -7,6 +7,7 @@ import { Navigate } from 'react-router-dom';
 import { getToken } from '../../ecommerceAPI/getToken';
 import { isLogin } from '../../ecommerceAPI/isLogin';
 import { getTokenPSWDflow } from '../../ecommerceAPI/getTokenPSWDflow';
+import { getBasketList } from '../../ecommerceAPI/getBasketList';
 
 export default function LoginForm() {
   const [isDisabled, setIsDisabled] = useState(true);
@@ -27,16 +28,15 @@ export default function LoginForm() {
         const { access_token } = await tokenPSWDdata.json();
         console.log('tokenPSWDdata', access_token);
         localStorage.setItem(`tokenPSWD`, `${access_token}`);
-
         // const { access_token } = await tokenData.json();
         // console.log(access_token);
-        const status = await isLogin(userData, access_token);
+        const status = await isLogin(userData, await access_token);
         const user = await status.json();
 
         if ((await String(status.status)) === '200') {
-          console.log(user);
           alert(`Hello ${user.customer.firstName}, we know you)`);
           setIsAuth(true);
+          getBasketList(access_token, user.customer.id);
           //console.log(await String(status));
           //console.log(await user);
         } else {

@@ -6,6 +6,7 @@ import { findAllByAltText } from '@testing-library/react';
 import { Category } from '../sidebar/Sidebar';
 
 export function ProductCard({ product }: any) {
+  console.log(product);
   const { categories } = useContext(CategoriesContext);
   const categoriesArray: Category[] = categories;
   const catList: string[] = [];
