@@ -5,6 +5,9 @@ import { useAutorization } from '../../hooks/useAutorization/useAutorization';
 import { postClient } from '../../ecommerceAPI/postCustomers';
 import { AuthContext } from '../../context/authContext/AuthContext';
 import { Navigate } from 'react-router-dom';
+import { getToken } from '../../ecommerceAPI/getToken';
+import { createCart } from '../../ecommerceAPI/createCart';
+import { getTokenPSWDflow } from '../../ecommerceAPI/getTokenPSWDflow';
 
 export default function SignUpForm() {
   const [isDisabled, setIsDisabled] = useState(true);
@@ -17,13 +20,28 @@ export default function SignUpForm() {
     throw new Error('Function not implemented.');
   }
 
+  async function tokenCreateCustomer(userData: {}) {
+    const token = await getToken();
+    const { access_token } = await token.json();
+    await postClient(userData, `${access_token}`);
+  }
+  async function tokenCreatedCustomer(userData: { email: string; password: string }) {
+    const { email, password } = userData;
+    const tokenPSWDdata = await getTokenPSWDflow(`${email}`, `${password}`);
+    const { access_token } = await tokenPSWDdata.json();
+    await localStorage.setItem('PSWDflow', `${access_token}`);
+  }
+
   return (
     <form
       onSubmit={async event => {
         const userData = await submitHandler(event);
-        await saveToken(event);
-        const token = await localStorage.getItem('access_token');
-        await postClient(userData, `${token}`);
+        await tokenCreateCustomer(userData);
+        //wait saveToken(event);
+        await tokenCreatedCustomer(userData);
+        //await localStorage.setItem('access_token', `${access_token}`);
+        await createCart(`${localStorage.getItem('PSWDflow')}`);
+
         setIsAuth(true);
       }}
       autoComplete="off"
