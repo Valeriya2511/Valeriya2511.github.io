@@ -37,7 +37,7 @@ export default function LoginForm() {
           setIsAuth(true);
           getBasketList(access_token, user.customer.id);
           //console.log(await String(status));
-          //console.log(await user);
+          console.log('user', user);
         } else {
           setIsAuth(false);
           //console.log(await String(status));
