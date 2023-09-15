@@ -4,14 +4,13 @@ import React, { useContext, useState } from 'react';
 import { useAutorization } from '../../hooks/useAutorization/useAutorization';
 import { AuthContext } from '../../context/authContext/AuthContext';
 import { Navigate } from 'react-router-dom';
-import { getToken } from '../../ecommerceAPI/getToken';
 import { isLogin } from '../../ecommerceAPI/isLogin';
 import { getTokenPSWDflow } from '../../ecommerceAPI/getTokenPSWDflow';
 import { getBasketList } from '../../ecommerceAPI/getBasketList';
 
 export default function LoginForm() {
   const [isDisabled, setIsDisabled] = useState(true);
-  const { submitHandler } = useAutorization();
+  const { submitHandler, saveToken } = useAutorization();
   const { isAuth, setIsAuth } = useContext(AuthContext);
 
   if (isAuth) {

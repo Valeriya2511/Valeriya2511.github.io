@@ -1,9 +1,7 @@
-import { useContext, useState } from 'react';
+import { FormEvent, useContext, useState } from 'react';
 import InputField from '../UI/InputField/InputField';
 import ButtonAutorization from '../UI/ButtonAutorization/ButtonAutorization';
 import { useAutorization } from '../../hooks/useAutorization/useAutorization';
-// import { IFormProps } from '../LoginForm/LoginForm';
-import { getToken } from '../../ecommerceAPI/getToken';
 import { postClient } from '../../ecommerceAPI/postCustomers';
 import { AuthContext } from '../../context/authContext/AuthContext';
 import { Navigate } from 'react-router-dom';
@@ -15,13 +13,17 @@ export default function SignUpForm() {
   if (isAuth) {
     return <Navigate replace to="/main" />;
   }
+  function saveToken(event: FormEvent<HTMLFormElement>) {
+    throw new Error('Function not implemented.');
+  }
+
   return (
     <form
       onSubmit={async event => {
         const userData = await submitHandler(event);
-        const tokenData = await getToken();
-        const { access_token } = await tokenData.json();
-        await postClient(userData, access_token);
+        await saveToken(event);
+        const token = await localStorage.getItem('access_token');
+        await postClient(userData, `${token}`);
         setIsAuth(true);
       }}
       autoComplete="off"
