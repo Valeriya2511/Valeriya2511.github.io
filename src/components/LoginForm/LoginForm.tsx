@@ -21,7 +21,7 @@ export default function LoginForm() {
     <form
       onSubmit={async event => {
         const userData = await submitHandler(event);
-        const tokenData = await getToken();
+        // const tokenData = await getToken();
         //*****tokenPSWD */
         const tokenPSWDdata = await getTokenPSWDflow(userData.email, userData.password);
         const { access_token } = await tokenPSWDdata.json();
