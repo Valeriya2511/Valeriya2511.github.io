@@ -5,6 +5,8 @@ import { useAutorization } from '../../hooks/useAutorization/useAutorization';
 import { AuthContext } from '../../context/authContext/AuthContext';
 import { Navigate } from 'react-router-dom';
 import { isLogin } from '../../ecommerceAPI/isLogin';
+import { getTokenPSWDflow } from '../../ecommerceAPI/getTokenPSWDflow';
+import { getBasketList } from '../../ecommerceAPI/getBasketList';
 
 export default function LoginForm() {
   const [isDisabled, setIsDisabled] = useState(true);
@@ -19,14 +21,21 @@ export default function LoginForm() {
     <form
       onSubmit={async event => {
         const userData = await submitHandler(event);
-        await saveToken(event);
-        const token = await localStorage.getItem('access_token');
-        const status = await isLogin(userData, `${token}`);
+        // const tokenData = await getToken();
+        //*****tokenPSWD */
+        const tokenPSWDdata = await getTokenPSWDflow(userData.email, userData.password);
+        const { access_token } = await tokenPSWDdata.json();
+        console.log('tokenPSWDdata', access_token);
+        localStorage.setItem(`tokenPSWD`, `${access_token}`);
+        // const { access_token } = await tokenData.json();
+        // console.log(access_token);
+        const status = await isLogin(userData, await access_token);
         const user = await status.json();
 
         if ((await String(status.status)) === '200') {
           alert(`Hello ${user.customer.firstName}, we know you)`);
           setIsAuth(true);
+          getBasketList(access_token, user.customer.id);
           //console.log(await String(status));
           //console.log(await user);
         } else {
