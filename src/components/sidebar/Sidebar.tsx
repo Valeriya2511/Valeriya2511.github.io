@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import styles from './Sidebar.module.css';
 import { CategoriesContext } from '../../context/categoriesContext/CategoriesContext';
 import { SelectByCategoryID } from '../../ecommerceAPI/SelectByCategoryID';
@@ -59,7 +59,8 @@ function addToProducts(currentList: IProduct[]) {
 
 export function Sidebar() {
   const { categories } = useContext(CategoriesContext);
-  const { setProducts } = useContext(ProductsContext);
+  const { products, setProducts } = useContext(ProductsContext);
+
   const categoriesData: Category[] = categories;
   // console.log('categoriesData', categoriesData);
   const mainCategories = categoriesData.filter(cat => {
@@ -81,6 +82,7 @@ export function Sidebar() {
           onClick={async () => {
             setCategoriesVisible(mainCategories);
             setVisibleUnvisible(styles.unvisible);
+            setProducts(products);
             const token = localStorage.getItem('access_token');
             if (!token) {
               const rowToken = await getToken();
