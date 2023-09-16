@@ -1,40 +1,78 @@
 .basket {
-	background-color: #267ea3de;
-	max-width: 100vw;
-	height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  background-color: #267ea3de;
+  max-width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .empty {
-	max-width: 300px;
-	background-color: white;
-	border-radius: 10px;
-	padding: 20px 20px;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	box-shadow: 0 0 10px #000000;
+  max-width: 300px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-shadow: 0 0 10px #000000;
 }
 
-.button__empty{
+.button__empty {
   width: 200px;
-	border: none;
-	background-color: #009688;
-	padding: 10px 16px;
-	color: white;
-	margin-top: 20px;
-	cursor: pointer;
-	font-size: 18px;
+  border: none;
+  background-color: #009688;
+  padding: 10px 16px;
+  color: white;
+  margin-top: 20px;
+  cursor: pointer;
+  font-size: 18px;
 }
 
-.button__empty:hover{
-	background-color: #ffffff;
+.button__empty:hover {
+  background-color: #ffffff;
   color: #009688;
   box-shadow: 0 0 5px #000000;
 }
 
 .title__empty {
-	margin-block-end: 0;
+  margin-block-end: 0;
+}
+.basketFull {
+  padding-top: 5px;
+  background-color: #267ea3de;
+  max-width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 5px;
+  color: #ffffff;
+}
+
+.topContainer {
+  background-color: #009688;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 3px;
+  font-size: 0.8rem;
+  justify-content: center;
+  border: 1px solid #ee971c;
+  border-radius: 3px;
+  max-width: 450px;
+  width: 100%;
+}
+
+.title__full {
+  margin: 0px;
+  padding: 0px;
+  color: #ee971c;
+}
+
+.itemListContainer {
+  display: flex;
+  background-color: #009688;
+  gap: 3px;
 }
