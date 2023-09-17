@@ -1,7 +1,7 @@
 import styles from './LineItem.module.css';
 import { iLineItem } from '../interface/iLineItem';
 
-export function LineItem({ lineItem }: any) {
+export function LineItem({ lineItem, numer }: any) {
   const image = lineItem.variant.images[0].url;
   const pricePiece = lineItem.price.value.centAmount;
   const currencyItem = lineItem.price.value.currencyCode;
@@ -9,11 +9,10 @@ export function LineItem({ lineItem }: any) {
   const altTextImg = lineItem.productSlug.en;
   const quantity = lineItem.quantity;
   const totalItemPriceCent = lineItem.totalPrice.centAmount;
-  // console.log('lineItem', lineItem);
   return (
     <div className={styles.itemContainer}>
       <div className={styles.itemNumerDeleteContainer}>
-        <span className={styles.itemNumerContainer}>10</span>
+        <span className={styles.itemNumerContainer}>{`${numer + 1}`}</span>
         <button className={styles.itemButton}>
           <img className={styles.iconsvg} src="./delete.svg" alt="remove" />
         </button>

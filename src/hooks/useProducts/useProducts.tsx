@@ -9,12 +9,12 @@ export function useProducts() {
   const { setProducts } = useContext(ProductsContext);
   const { setCategories } = useContext(CategoriesContext);
   const loadProducts = async () => {
-    const token = await localStorage.getItem('tokenPSWD');
-    console.log('productList token', token);
+    const token = await localStorage.getItem('userToken');
+    // console.log('productList token', token);
     const productData = await getProducts(`${token}`);
     const product = await productData.json();
     const productList: IRowProduct[] = product.results;
-    console.log('productList', productList);
+    // console.log('productList', productList);
     setProducts(productList);
     const categoriesData = await getCategories(`${token}`);
     setCategories(categoriesData);

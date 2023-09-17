@@ -45,7 +45,7 @@ export function ProductCard({ product }: any) {
   }
 
   const cartHandler = async () => {
-    const userToken = localStorage.getItem('userToken')
+    const userToken = localStorage.getItem('userToken');
     const dataCarts = await queryCartsData(`${userToken}`);
     console.log(product.id);
   };

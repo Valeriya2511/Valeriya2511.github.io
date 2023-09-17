@@ -24,21 +24,15 @@ export default function LoginForm() {
     <form
       onSubmit={async event => {
         const userData = await submitHandler(event);
-        // const tokenData = await getToken();
-        //*****tokenPSWD */
         const tokenPSWDdata = await getTokenPSWDflow(userData.email, userData.password);
         const { access_token } = await tokenPSWDdata.json();
-        // console.log('tokenPSWDdata', access_token);
-        localStorage.setItem(`tokenPSWD`, `${access_token}`);
-        // const { access_token } = await tokenData.json();
-        // console.log(access_token);
+        localStorage.setItem(`userToken`, `${access_token}`);
         const status = await isLogin(userData, await access_token);
         const user = await status.json();
-        console.log(user)
-        const userToken = await getTokenCustomer(userData.email, userData.password);
-        localStorage.setItem('userToken', userToken.access_token)
+        // const userToken = await getTokenCustomer(userData.email, userData.password);
+        // localStorage.setItem('userToken', userToken.access_token)
 
-        console.log(userToken)
+        // console.log(userToken)
 
         if ((await String(status.status)) === '200') {
           alert(`Hello ${user.customer.firstName}, we know you)`);
