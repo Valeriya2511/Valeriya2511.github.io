@@ -18,6 +18,8 @@ function App() {
     totalPrice: { centAmount: 0, currencyCode: '' },
     totalLineItemQuantity: 0,
     lineItems: [],
+    customerId: '',
+    version: 1,
   });
 
   return (

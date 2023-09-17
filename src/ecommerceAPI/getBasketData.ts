@@ -1,4 +1,4 @@
-export const getBasketList = async (token: string, idCustomer: string) => {
+export const getBasketData = async (token: string, idCustomer: string) => {
   const data = await fetch(
     `https://api.australia-southeast1.gcp.commercetools.com/ecommerce-application_1/carts/customer-id=${idCustomer}`,
 

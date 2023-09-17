@@ -7,7 +7,7 @@ import { Navigate } from 'react-router-dom';
 import { isLogin } from '../../ecommerceAPI/isLogin';
 import { getTokenCustomer } from '../../ecommerceAPI/getTokenCustomer';
 import { getTokenPSWDflow } from '../../ecommerceAPI/getTokenPSWDflow';
-import { getBasketList } from '../../ecommerceAPI/getBasketList';
+import { getBasketData } from '../../ecommerceAPI/getBasketData';
 import { BasketContext } from '../../context/basketContext/BasketContext';
 
 export default function LoginForm() {
@@ -31,19 +31,12 @@ export default function LoginForm() {
         const user = await status.json();
         // const userToken = await getTokenCustomer(userData.email, userData.password);
         // localStorage.setItem('userToken', userToken.access_token)
-
-        // console.log(userToken)
-
         if ((await String(status.status)) === '200') {
           alert(`Hello ${user.customer.firstName}, we know you)`);
           setIsAuth(true);
-          // const cartCustomer = await getBasketList(access_token, user.customer.id);
-          const loginStartBasket = await getBasketList(access_token, user.customer.id);
+          const loginStartBasket = await getBasketData(access_token, user.customer.id);
           setBasket(loginStartBasket);
-          // console.log(await user);
-          // console.log(await cartCustomer.json());
-          //console.log(await String(status));
-          // console.log('user', user);
+          console.log('user', user);
         } else {
           setIsAuth(false);
           //console.log(await String(status));
