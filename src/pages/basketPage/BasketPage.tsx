@@ -2,9 +2,12 @@ import styles from './BasketPage.module.css';
 import { Link } from 'react-router-dom';
 import { iLineItem } from '../../components/interface/iLineItem';
 import { LineItem } from '../../components/lineItem/LineItem';
+import { BasketContext } from '../../context/basketContext/BasketContext';
+import { useContext } from 'react';
 
 export function BasketPage() {
-  const basketList: iLineItem[] = [
+  const { basketList } = useContext(BasketContext);
+  const basketList2: iLineItem[] = [
     {
       name: 'Sneakers “Jazz“ Saucony light grey ',
       priceCent: 11875,

@@ -11,6 +11,5 @@ export const getBasketList = async (token: string, idCustomer: string) => {
     },
   );
   const dataJson = await data.json();
-  console.log('getBasketList', dataJson.lineItems);
   return await dataJson.lineItems;
 };
