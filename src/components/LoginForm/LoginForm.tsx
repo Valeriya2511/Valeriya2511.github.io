@@ -37,8 +37,11 @@ export default function LoginForm() {
         if ((await String(status.status)) === '200') {
           alert(`Hello ${user.customer.firstName}, we know you)`);
           setIsAuth(true);
+          // const cartCustomer = await getBasketList(access_token, user.customer.id);
           const loginBasketList = await getBasketList(access_token, user.customer.id);
           setBasketList(loginBasketList);
+          // console.log(await user);
+          // console.log(await cartCustomer.json());
           //console.log(await String(status));
           // console.log('user', user);
         } else {
