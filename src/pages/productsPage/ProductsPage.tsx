@@ -10,7 +10,7 @@ import { Loading } from '../../components/loading/Loading';
 export function ProductsPage() {
   const [count, setCount] = useState(3);
   const { products } = useContext(ProductsContext);
-  console.log(products);
+  // console.log(products);
   const { categories } = useContext(CategoriesContext);
   useEffect(() => {
     //console.log(products);
