@@ -41,9 +41,9 @@ export function BasketPage() {
         <h2 className={styles.title__full}>Total quantity: {total.quantity} pcs</h2>
       </div>
       <div className={styles.itemListContainer}>
-        {basketList.map(item => {
+        {basketList.map((item, index) => {
           const { productId } = item;
-          return <LineItem lineItem={item} key={productId} />;
+          return <LineItem lineItem={item} key={productId} numer={index} />;
         })}
       </div>
       <button className={styles.buttonClear}>Clear Basket</button>

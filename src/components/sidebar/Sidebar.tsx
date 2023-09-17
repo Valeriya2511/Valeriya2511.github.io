@@ -83,7 +83,7 @@ export function Sidebar() {
             setCategoriesVisible(mainCategories);
             setVisibleUnvisible(styles.unvisible);
             setProducts(products);
-            const token = localStorage.getItem('access_token');
+            const token = localStorage.getItem('userToken');
             if (!token) {
               const rowToken = await getToken();
               const { access_token } = await rowToken.json();
@@ -105,7 +105,7 @@ export function Sidebar() {
               key={element.id}
               className={styles.menuItem}
               onClick={async () => {
-                const token = localStorage.getItem('access_token');
+                const token = localStorage.getItem('userToken');
                 if (token) {
                   const prod = await SelectByCategoryID(element.id, token);
                   const newProductList = addToProducts(prod);

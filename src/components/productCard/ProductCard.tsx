@@ -5,7 +5,7 @@ import { CategoriesContext } from '../../context/categoriesContext/CategoriesCon
 import { findAllByAltText } from '@testing-library/react';
 import { Category } from '../sidebar/Sidebar';
 import { IRowProduct } from '../interface/IRowProduct';
-
+import { queryCartsData } from '../../ecommerceAPI/queryCartsData';
 export function ProductCard({ product }: any) {
   const { categories } = useContext(CategoriesContext);
   const categoriesArray: Category[] = categories;
@@ -44,11 +44,13 @@ export function ProductCard({ product }: any) {
     }
   }
 
-  const cartHandler = () => {
-    console.log('добавить товар в корзину');
+  const cartHandler = async () => {
+    const userToken = localStorage.getItem('userToken');
+    const dataCarts = await queryCartsData(`${userToken}`);
+    console.log(product.id);
   };
   return (
-    <Link className={styles.link} to="/productItem">
+    <Link className={styles.link} to="/products">
       <div className={styles.container}>
         <h2 className={styles.title}>{productDataObject.name}</h2>
         <div className={styles.topWrapper}>

@@ -32,6 +32,7 @@
   font-size: 0.8rem;
   color: #009688;
   background: #fff;
+  width: 18px;
 }
 
 .iconsvg {
@@ -88,7 +89,7 @@
   gap: 5px;
   justify-content: center;
   align-items: center;
-  margin: auto;
+  width: 100%;
 }
 
 .itemPriceContainer,
@@ -97,6 +98,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin: auto;
 }
 .itemTotalPriceContainer {
   font-weight: bold;
@@ -109,12 +111,10 @@
   border: 1px solid #009688;
   cursor: pointer;
   color: #fff;
-  gap: 2px;
   box-shadow: 0px 0px 2px 0px #fff;
   padding: 1px;
   width: 18px;
   height: 18px;
-  margin: auto;
 }
 
 .itemButton:hover {
