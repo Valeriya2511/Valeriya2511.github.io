@@ -13,7 +13,7 @@ export default function LoginForm() {
   const [isDisabled, setIsDisabled] = useState(true);
   const { submitHandler, saveToken } = useAutorization();
   const { isAuth, setIsAuth } = useContext(AuthContext);
-  const { setBasketList } = useContext(BasketContext);
+  const { setBasket } = useContext(BasketContext);
 
   if (isAuth) {
     return <Navigate replace to="/main" />;
@@ -38,8 +38,8 @@ export default function LoginForm() {
           alert(`Hello ${user.customer.firstName}, we know you)`);
           setIsAuth(true);
           // const cartCustomer = await getBasketList(access_token, user.customer.id);
-          const loginBasketList = await getBasketList(access_token, user.customer.id);
-          setBasketList(loginBasketList);
+          const loginStartBasket = await getBasketList(access_token, user.customer.id);
+          setBasket(loginStartBasket);
           // console.log(await user);
           // console.log(await cartCustomer.json());
           //console.log(await String(status));

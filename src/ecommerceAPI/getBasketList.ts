@@ -10,6 +10,6 @@ export const getBasketList = async (token: string, idCustomer: string) => {
       },
     },
   );
-  const dataJson = await data.json();
-  return await dataJson.lineItems;
+  const Basket = await data.json();
+  return await Basket;
 };

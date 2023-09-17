@@ -13,7 +13,12 @@ function App() {
   const [isAuth, setIsAuth] = useState(false);
   const [products, setProducts] = useState<[] | IRowProduct[]>([]);
   const [categories, setCategories] = useState([]);
-  const [basketList, setBasketList] = useState([]);
+  const [basket, setBasket] = useState({
+    id: '',
+    totalPrice: { centAmount: 0, currencyCode: '' },
+    totalLineItemQuantity: 0,
+    lineItems: [],
+  });
 
   return (
     <AuthContext.Provider
@@ -24,7 +29,7 @@ function App() {
     >
       <ProductsContext.Provider value={{ products, setProducts }}>
         <CategoriesContext.Provider value={{ categories, setCategories }}>
-          <BasketContext.Provider value={{ basketList, setBasketList }}>
+          <BasketContext.Provider value={{ basket, setBasket }}>
             <Header />
             <RouterApp />
             <Footer />

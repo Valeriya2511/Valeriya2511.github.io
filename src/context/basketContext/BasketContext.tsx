@@ -1,10 +1,16 @@
 import { createContext } from 'react';
 
-export interface IBasketContext {
-  basketList: [];
-  setBasketList: (basketList: []) => void;
-}
 export const BasketContext = createContext({
-  basketList: [],
-  setBasketList: (basketList: []) => {},
+  basket: {
+    id: '',
+    totalPrice: { centAmount: 0, currencyCode: 'EUR' },
+    totalLineItemQuantity: 0,
+    lineItems: [],
+  },
+  setBasket: (basket: {
+    id: '';
+    totalPrice: { centAmount: 0; currencyCode: 'EUR' };
+    totalLineItemQuantity: 0;
+    lineItems: [];
+  }) => {},
 });

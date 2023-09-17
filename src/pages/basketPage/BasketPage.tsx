@@ -6,30 +6,14 @@ import { BasketContext } from '../../context/basketContext/BasketContext';
 import { useContext } from 'react';
 
 export function BasketPage() {
-  const { basketList } = useContext(BasketContext);
-  const basketList2: iLineItem[] = [
-    {
-      name: 'Sneakers “Jazz“ Saucony light grey ',
-      priceCent: 11875,
-      currencyCode: 'EUR',
-      productId: '5d24a816-9155-4af5-b020-2d7e91a4db1d',
-      productSlug: 'saucony-sneakers-jazz-S2044320-lightgrey',
-      quantity: 7,
-      totalItemPriceCent: 83125,
-      images: 'https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/079984_1_large.jpg',
-    },
-    {
-      name: 'Sneakers “Jazz“ Saucony light grey',
-      priceCent: 11875,
-      currencyCode: 'EUR',
-      productId: '5d24a816-9155-4af5-b020-2d7e91a4db1d2',
-      productSlug: 'saucony-sneakers-jazz-S2044320-lightgrey',
-      quantity: 7,
-      totalItemPriceCent: 83125,
-      images: 'https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/079984_1_large.jpg',
-    },
-  ];
-  const total = { centAmount: 3083125, currencyCode: 'EUR', quantity: 2 };
+  const { basket } = useContext(BasketContext);
+  console.log('basket', basket);
+  const total = {
+    centAmount: basket.totalPrice.centAmount,
+    currencyCode: basket.totalPrice.currencyCode,
+    quantity: basket.totalLineItemQuantity,
+  };
+  const basketList = basket.lineItems;
 
   return basketList.length === 0 ? (
     <div className={styles.basket}>
