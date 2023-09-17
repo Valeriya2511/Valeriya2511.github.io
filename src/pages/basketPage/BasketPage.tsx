@@ -4,16 +4,32 @@ import { iLineItem } from '../../components/interface/iLineItem';
 import { LineItem } from '../../components/lineItem/LineItem';
 import { BasketContext } from '../../context/basketContext/BasketContext';
 import { useContext } from 'react';
+import { deleteBasket } from '../../ecommerceAPI/deleteBasket';
+import { createCart } from '../../ecommerceAPI/createCart';
+import { getBasketData } from '../../ecommerceAPI/getBasketData';
 
 export function BasketPage() {
-  const { basket } = useContext(BasketContext);
-  console.log('basket', basket);
+  const { basket, setBasket } = useContext(BasketContext);
+  // console.log('basket', basket);
+  const customerId = basket.customerId;
+  const cartVersion = basket.version;
   const total = {
     centAmount: basket.totalPrice.centAmount,
     currencyCode: basket.totalPrice.currencyCode,
     quantity: basket.totalLineItemQuantity,
   };
   const basketList = basket.lineItems;
+  const cleaningBasket = async () => {
+    const userToken = localStorage.getItem('userToken');
+    const idBasket = basket.id;
+
+    if (userToken) {
+      await deleteBasket(userToken, idBasket, cartVersion);
+      await createCart(userToken);
+      const newBasket = await getBasketData(userToken, customerId);
+      setBasket(newBasket);
+    }
+  };
 
   return basketList.length === 0 ? (
     <div className={styles.basket}>
@@ -46,7 +62,9 @@ export function BasketPage() {
           return <LineItem lineItem={item} key={productId} numer={index} />;
         })}
       </div>
-      <button className={styles.buttonClear}>Clear Basket</button>
+      <button className={styles.buttonClear} onClick={cleaningBasket}>
+        Clear Basket
+      </button>
     </div>
   );
 }
