@@ -4,7 +4,6 @@ import { useContext } from 'react';
 import { CategoriesContext } from '../../context/categoriesContext/CategoriesContext';
 import { findAllByAltText } from '@testing-library/react';
 import { Category } from '../sidebar/Sidebar';
-
 export function ProductCard({ product }: any) {
   const { categories } = useContext(CategoriesContext);
   const categoriesArray: Category[] = categories;
@@ -44,7 +43,8 @@ export function ProductCard({ product }: any) {
   }
 
   const cartHandler = () => {
-    console.log('добавить товар в корзину');
+    
+    console.log('Товар добавлен в корзину');
   };
   return (
     <Link className={styles.link} to="/productItem">
