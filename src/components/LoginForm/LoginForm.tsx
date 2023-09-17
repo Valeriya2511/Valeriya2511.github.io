@@ -7,11 +7,13 @@ import { Navigate } from 'react-router-dom';
 import { isLogin } from '../../ecommerceAPI/isLogin';
 import { getTokenPSWDflow } from '../../ecommerceAPI/getTokenPSWDflow';
 import { getBasketList } from '../../ecommerceAPI/getBasketList';
+import { BasketContext } from '../../context/basketContext/BasketContext';
 
 export default function LoginForm() {
   const [isDisabled, setIsDisabled] = useState(true);
   const { submitHandler, saveToken } = useAutorization();
   const { isAuth, setIsAuth } = useContext(AuthContext);
+  const { setBasket } = useContext(BasketContext);
 
   if (isAuth) {
     return <Navigate replace to="/main" />;
@@ -25,7 +27,7 @@ export default function LoginForm() {
         //*****tokenPSWD */
         const tokenPSWDdata = await getTokenPSWDflow(userData.email, userData.password);
         const { access_token } = await tokenPSWDdata.json();
-        console.log('tokenPSWDdata', access_token);
+        // console.log('tokenPSWDdata', access_token);
         localStorage.setItem(`tokenPSWD`, `${access_token}`);
         // const { access_token } = await tokenData.json();
         // console.log(access_token);
@@ -35,11 +37,13 @@ export default function LoginForm() {
         if ((await String(status.status)) === '200') {
           alert(`Hello ${user.customer.firstName}, we know you)`);
           setIsAuth(true);
-          const cartCustomer = await getBasketList(access_token, user.customer.id);
-          console.log(await user);
-          console.log(await cartCustomer.json());
+          // const cartCustomer = await getBasketList(access_token, user.customer.id);
+          const loginStartBasket = await getBasketList(access_token, user.customer.id);
+          setBasket(loginStartBasket);
+          // console.log(await user);
+          // console.log(await cartCustomer.json());
           //console.log(await String(status));
-          //console.log(await user);
+          // console.log('user', user);
         } else {
           setIsAuth(false);
           //console.log(await String(status));
