@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { CategoriesContext } from '../../context/categoriesContext/CategoriesContext';
 import { findAllByAltText } from '@testing-library/react';
 import { Category } from '../sidebar/Sidebar';
+import { queryCartsId } from '../../ecommerceAPI/queryCartsId';
 export function ProductCard({ product }: any) {
   const { categories } = useContext(CategoriesContext);
   const categoriesArray: Category[] = categories;
@@ -42,9 +43,10 @@ export function ProductCard({ product }: any) {
     }
   }
 
-  const cartHandler = () => {
-    
-    console.log('Товар добавлен в корзину');
+  const cartHandler = async () => {
+    const userToken = localStorage.getItem('userToken')
+    const dataCarts = await queryCartsId(`${userToken}`);
+    console.log(dataCarts);
   };
   return (
     <Link className={styles.link} to="/productItem">

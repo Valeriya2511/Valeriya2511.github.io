@@ -6,7 +6,7 @@ import { AuthContext } from '../../context/authContext/AuthContext';
 import { Navigate } from 'react-router-dom';
 import { getToken } from '../../ecommerceAPI/getToken';
 import { isLogin } from '../../ecommerceAPI/isLogin';
-import { getTokenCustom } from '../../ecommerceAPI/getTokenCustom';
+import { getTokenCustomer } from '../../ecommerceAPI/getTokenCustomer';
 
 export default function LoginForm() {
   const [isDisabled, setIsDisabled] = useState(true);
@@ -26,7 +26,7 @@ export default function LoginForm() {
         const status = await isLogin(userData, access_token);
         const user = await status.json();
         console.log(user)
-        const userToken = await getTokenCustom(userData.email, userData.password);
+        const userToken = await getTokenCustomer(userData.email, userData.password);
         localStorage.setItem('userToken', userToken.access_token)
 
         console.log(userToken)
