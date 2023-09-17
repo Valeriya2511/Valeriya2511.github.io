@@ -47,10 +47,10 @@ export function ProductCard({ product }: any) {
   const cartHandler = async () => {
     const userToken = localStorage.getItem('userToken')
     const dataCarts = await queryCartsId(`${userToken}`);
-    console.log(dataCarts);
+    console.log(product.id);
   };
   return (
-    <Link className={styles.link} to="/productItem">
+    <Link className={styles.link} to="/products">
       <div className={styles.container}>
         <h2 className={styles.title}>{productDataObject.name}</h2>
         <div className={styles.topWrapper}>
