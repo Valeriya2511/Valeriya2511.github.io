@@ -29,7 +29,7 @@ export default function SignUpForm() {
     const { email, password } = userData;
     const tokenPSWDdata = await getTokenPSWDflow(`${email}`, `${password}`);
     const { access_token } = await tokenPSWDdata.json();
-    await localStorage.setItem('PSWDflow', `${access_token}`);
+    await localStorage.setItem('tokenPSWD', `${access_token}`);
   }
 
   return (
@@ -40,7 +40,7 @@ export default function SignUpForm() {
         //wait saveToken(event);
         await tokenCreatedCustomer(userData);
         //await localStorage.setItem('access_token', `${access_token}`);
-        await createCart(`${localStorage.getItem('PSWDflow')}`);
+        await createCart(`${localStorage.getItem('tokenPSWD')}`);
 
         setIsAuth(true);
       }}
