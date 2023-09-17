@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { CategoriesContext } from '../../context/categoriesContext/CategoriesContext';
 import { findAllByAltText } from '@testing-library/react';
 import { Category } from '../sidebar/Sidebar';
+import { IRowProduct } from '../interface/IRowProduct';
 import { queryCartsId } from '../../ecommerceAPI/queryCartsId';
 export function ProductCard({ product }: any) {
   const { categories } = useContext(CategoriesContext);

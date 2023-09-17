@@ -1,15 +1,19 @@
-import { useState, useContext } from 'react';
-import { AuthContext } from '../../context/authContext/AuthContext';
-
+import { useState } from 'react';
+import { getToken } from '../../ecommerceAPI/getToken';
 export function useAutorization() {
   const [login, setLogin] = useState(false);
-  //const { setIsAuth } = useContext(AuthContext);
   const changeLoginHandler = () => {
     setLogin(true);
   };
 
   const changeSignUpHandler = () => {
     setLogin(false);
+  };
+
+  const saveToken = async (event: React.FormEvent) => {
+    const tokenData = await getToken();
+    const { access_token } = await tokenData.json();
+    localStorage.setItem('access_token', access_token);
   };
 
   const submitHandler = async (event: React.FormEvent) => {
@@ -24,8 +28,9 @@ export function useAutorization() {
     userData.firstName = `${formData.get('name')}`;
     userData.email = `${formData.get('email')}`;
     userData.password = `${formData.get('password')}`;
-    localStorage.setItem(`${userData.email}`, `${userData.password}`);
+    localStorage.setItem('email', `${userData.email}`);
+    localStorage.setItem('password', `${userData.password}`);
     return userData;
   };
-  return { login, changeLoginHandler, changeSignUpHandler, submitHandler };
+  return { login, changeLoginHandler, changeSignUpHandler, submitHandler, saveToken };
 }
