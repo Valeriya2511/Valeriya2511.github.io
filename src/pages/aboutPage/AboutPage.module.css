@@ -1,0 +1,14 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin: auto;
+}
+
+.cardsContainer {
+  padding: 3px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: auto;
+}
