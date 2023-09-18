@@ -19,13 +19,13 @@ export function RouterApp() {
         <Route path="/" element={<SignLoginPage />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="*" element={<Page404 />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/basket" element={<BasketPage />} />
         {isAuth && (
           <>
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/productItem1111" element={<ProductItemPage />} />
             <Route path="/user" element={<UserPage />} />
-            <Route path="/basket" element={<BasketPage />} />
-            <Route path="/about" element={<AboutPage />} />
             <Route path="/productItem" element={<ProductItemPage />} />
           </>
         )}

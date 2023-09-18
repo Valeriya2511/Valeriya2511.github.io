@@ -31,8 +31,10 @@
 .footerLink {
   display: flex;
   align-items: center;
-  margin-left: 50px;
+  justify-content: center;
   color: #009485;
+  font-size: 1rem;
+  gap: 5px;
 }
 .footerlist:hover {
   color: #f06600;
@@ -50,26 +52,39 @@
 
 .footer {
   width: 100%;
+  max-width: 850px;
+  margin: auto;
   height: 80px;
-  background: white;
+  background: #fff;
   color: #009688;
   padding: 0 50px;
   display: flex;
   justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .law {
-  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0;
+  /* width: 25%; */
+  font-size: 1rem;
+  min-width: 180px;
+  text-align: center;
 }
 
 .list {
   padding-inline-start: 0px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   height: 100%;
+  /* width: 75%; */
+  min-width: 200px;
+  font-size: 1rem;
 }
 
 .itel {

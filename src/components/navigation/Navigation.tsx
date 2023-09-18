@@ -9,7 +9,7 @@ export function Navigation() {
   const { isAuth, setIsAuth } = useContext(AuthContext);
   const { loadProducts } = useProducts();
   const { basket } = useContext(BasketContext);
-  const quantity = basket.totalLineItemQuantity;
+  const quantity = isAuth ? basket.totalLineItemQuantity : 0;
   return (
     <nav className={styles.navigation}>
       {isAuth ? (
@@ -47,6 +47,15 @@ export function Navigation() {
           </Link>
           <Link className={styles.link} to="/main">
             Main
+          </Link>
+          <Link className={styles.link} to="/about">
+            About
+          </Link>
+          <Link className={styles.linkIcon} to="/basket">
+            <div className={styles.imgCont}>
+              <img className={styles.iconsvg} src="/cart.svg" alt="basket" />
+              <div className={styles.products}>{quantity}</div>
+            </div>
           </Link>
         </>
       )}

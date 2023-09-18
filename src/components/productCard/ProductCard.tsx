@@ -27,7 +27,7 @@ export function ProductCard({ product }: any) {
     size: '',
     description: 'bla-bla-bla',
     categorie: catList.join('/ '),
-    currency: 'USD',
+    currency: 'EUR',
     discount: '-10%',
   };
   const attributList = product.masterData.current.masterVariant.attributes;
