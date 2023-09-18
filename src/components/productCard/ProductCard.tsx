@@ -6,6 +6,8 @@ import { findAllByAltText } from '@testing-library/react';
 import { Category } from '../sidebar/Sidebar';
 import { IRowProduct } from '../interface/IRowProduct';
 import { queryCartsData } from '../../ecommerceAPI/queryCartsData';
+import { addLineItem } from '../../ecommerceAPI/addLineItem';
+import { removeLineItem } from '../../ecommerceAPI/removeLineItem';
 export function ProductCard({ product }: any) {
   const { categories } = useContext(CategoriesContext);
   const categoriesArray: Category[] = categories;
@@ -47,7 +49,8 @@ export function ProductCard({ product }: any) {
   const cartHandler = async () => {
     const userToken = localStorage.getItem('userToken');
     const dataCarts = await queryCartsData(`${userToken}`);
-    console.log(product.id);
+    await addLineItem(`${userToken}`, dataCarts.results[0].id, product.id, dataCarts.results[0].version);
+    console.log(dataCarts.results[0].lineItems)
   };
   return (
     <Link className={styles.link} to="/products">
