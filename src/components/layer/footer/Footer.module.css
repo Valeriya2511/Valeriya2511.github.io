@@ -34,7 +34,7 @@
   justify-content: center;
   color: #009485;
   font-size: 1rem;
-  gap: 5px;
+  gap: 1px;
 }
 .footerlist:hover {
   color: #f06600;
@@ -47,7 +47,7 @@
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .footer {
@@ -59,7 +59,7 @@
   color: #009688;
   padding: 0 50px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   display: flex;
   flex-wrap: wrap;
 }
@@ -69,7 +69,6 @@
   align-items: center;
   justify-content: center;
   margin: 0;
-  /* width: 25%; */
   font-size: 1rem;
   min-width: 180px;
   text-align: center;
@@ -82,9 +81,9 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  /* width: 75%; */
   min-width: 200px;
   font-size: 1rem;
+  gap: 20px;
 }
 
 .itel {
