@@ -54,7 +54,7 @@ export function Navigation() {
           <Link className={styles.linkIcon} to="/basket">
             <div className={styles.imgCont}>
               <img className={styles.iconsvg} src="/cart.svg" alt="basket" />
-              <div className={styles.products}>{quantity}</div>
+              <div className={styles.products}>{quantity ? quantity : 0}</div>
             </div>
           </Link>
         </>

@@ -8,6 +8,8 @@ import { IRowProduct } from '../interface/IRowProduct';
 import { queryCartsData } from '../../ecommerceAPI/queryCartsData';
 import { addLineItem } from '../../ecommerceAPI/addLineItem';
 import { removeLineItem } from '../../ecommerceAPI/removeLineItem';
+import { BasketContext } from '../../context/basketContext/BasketContext';
+
 export function ProductCard({ product }: any) {
   const { categories } = useContext(CategoriesContext);
   const categoriesArray: Category[] = categories;
@@ -45,12 +47,18 @@ export function ProductCard({ product }: any) {
       productDataObject.brand = attributList[i].value.label;
     }
   }
-
+  const { setBasket } = useContext(BasketContext);
   const cartHandler = async () => {
     const userToken = localStorage.getItem('userToken');
     const dataCarts = await queryCartsData(`${userToken}`);
-    await addLineItem(`${userToken}`, dataCarts.results[0].id, product.id, dataCarts.results[0].version);
-    console.log(dataCarts.results[0].lineItems)
+    const newBasket = await addLineItem(
+      `${userToken}`,
+      dataCarts.results[0].id,
+      product.id,
+      dataCarts.results[0].version,
+    );
+    setBasket(newBasket);
+    // console.log('newBasket', newBasket);
   };
   return (
     <Link className={styles.link} to="/products">
