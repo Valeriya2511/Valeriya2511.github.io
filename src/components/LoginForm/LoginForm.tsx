@@ -36,7 +36,7 @@ export default function LoginForm() {
           setIsAuth(true);
           const loginStartBasket = await getBasketData(access_token, user.customer.id);
           setBasket(loginStartBasket);
-          console.log('user', user);
+          //console.log('user', user);
         } else {
           setIsAuth(false);
           //console.log(await String(status));

@@ -12,9 +12,7 @@ export function ProductsPage() {
   const { products } = useContext(ProductsContext);
   // console.log(products);
   const { categories } = useContext(CategoriesContext);
-  useEffect(() => {
-    //console.log(products);
-  }, [products]);
+  useEffect(() => {}, [products]);
   return (
     <div className={styles.container}>
       <div className={styles.sidebarColumn}>

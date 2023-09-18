@@ -60,7 +60,7 @@ function addToProducts(currentList: IProduct[]) {
 export function Sidebar() {
   const { categories } = useContext(CategoriesContext);
   const { products, setProducts } = useContext(ProductsContext);
-
+  useEffect(() => {}, [products]);
   const categoriesData: Category[] = categories;
   // console.log('categoriesData', categoriesData);
   const mainCategories = categoriesData.filter(cat => {
