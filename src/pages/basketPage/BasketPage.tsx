@@ -43,7 +43,6 @@ export function BasketPage() {
             className={styles.button__empty}
             onClick={async () => {
               await loadProducts();
-              console.log('добавить генерацию продукт пейдж в очередной раз');
             }}
           >
             Go to catalog
