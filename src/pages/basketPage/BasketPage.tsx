@@ -7,6 +7,7 @@ import { useContext } from 'react';
 import { deleteBasket } from '../../ecommerceAPI/deleteBasket';
 import { createCart } from '../../ecommerceAPI/createCart';
 import { getBasketData } from '../../ecommerceAPI/getBasketData';
+import { useProducts } from '../../hooks/useProducts/useProducts';
 
 export function BasketPage() {
   const { basket, setBasket } = useContext(BasketContext);
@@ -30,6 +31,7 @@ export function BasketPage() {
       setBasket(newBasket);
     }
   };
+  const { loadProducts } = useProducts();
 
   return basketList.length === 0 ? (
     <div className={styles.basket}>
@@ -39,7 +41,8 @@ export function BasketPage() {
         <Link className={styles.link} to="/products">
           <button
             className={styles.button__empty}
-            onClick={() => {
+            onClick={async () => {
+              await loadProducts();
               console.log('добавить генерацию продукт пейдж в очередной раз');
             }}
           >
