@@ -5,6 +5,57 @@
   margin: auto;
 }
 
+.intro {
+  padding: 3px;
+  max-width: 780px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+  gap: 5px;
+}
+
+.description {
+  color: #fff;
+  display: flex;
+  width: 60%;
+  min-width: 230px;
+}
+
+.rsLink {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+  align-items: center;
+  width: 20%;
+  min-width: 230px;
+}
+
+.rsLogo {
+  width: 150px;
+  margin: auto;
+  opacity: 0.8;
+}
+
+.rsLogo:hover {
+  transition: all 0.8s ease;
+  transform: rotate(1deg);
+  opacity: 1;
+}
+
+.rsText {
+  color: #ee971c;
+  padding: 1px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.rsText:hover {
+  transition: all 0.8s ease;
+  text-shadow: 0px 0px 1px #fff;
+}
+
 .cardsContainer {
   padding: 3px;
   display: flex;

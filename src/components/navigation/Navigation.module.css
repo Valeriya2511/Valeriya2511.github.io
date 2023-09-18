@@ -38,7 +38,7 @@
   align-items: center;
   justify-content: center;
   max-height: 32px;
-  overflow: hidden;
+  position: relative;
 }
 
 .link:hover,
@@ -48,7 +48,7 @@
   background-color: #ee971c;
 }
 
-.products{
+.products {
   position: absolute;
   background-color: #ee971c;
   width: 30px;
@@ -57,5 +57,5 @@
   text-align: center;
   padding-top: 6px;
   top: 0;
-  transform: translateX(20px) translateY(5px);
+  transform: translateX(20px) translateY(-20px);
 }
