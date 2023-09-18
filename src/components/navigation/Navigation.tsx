@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Navigation.module.css';
 import { AuthContext } from '../../context/authContext/AuthContext';
@@ -9,7 +9,11 @@ export function Navigation() {
   const { isAuth, setIsAuth } = useContext(AuthContext);
   const { loadProducts } = useProducts();
   const { basket } = useContext(BasketContext);
-  const quantity = isAuth ? basket.totalLineItemQuantity : 0;
+  const quantity = isAuth && basket.totalLineItemQuantity ? basket.totalLineItemQuantity : 0;
+
+  useEffect(() => {
+    loadProducts();
+  }, [quantity]);
   return (
     <nav className={styles.navigation}>
       {isAuth ? (
@@ -17,7 +21,7 @@ export function Navigation() {
           <Link className={styles.link} to="/main">
             Main
           </Link>
-          <Link onClick={async () => await loadProducts()} className={styles.link} to="/products">
+          <Link className={styles.link} to="/products">
             Catalog
           </Link>
           <Link className={styles.link} to="/about">
@@ -54,7 +58,7 @@ export function Navigation() {
           <Link className={styles.linkIcon} to="/basket">
             <div className={styles.imgCont}>
               <img className={styles.iconsvg} src="/cart.svg" alt="basket" />
-              <div className={styles.products}>{quantity ? quantity : 0}</div>
+              <div className={styles.products}>{quantity}</div>
             </div>
           </Link>
         </>

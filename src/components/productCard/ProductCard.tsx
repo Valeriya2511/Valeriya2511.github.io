@@ -2,12 +2,9 @@ import styles from './ProductCard.module.css';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { CategoriesContext } from '../../context/categoriesContext/CategoriesContext';
-import { findAllByAltText } from '@testing-library/react';
 import { Category } from '../sidebar/Sidebar';
-import { IRowProduct } from '../interface/IRowProduct';
 import { queryCartsData } from '../../ecommerceAPI/queryCartsData';
 import { addLineItem } from '../../ecommerceAPI/addLineItem';
-import { removeLineItem } from '../../ecommerceAPI/removeLineItem';
 import { BasketContext } from '../../context/basketContext/BasketContext';
 
 export function ProductCard({ product }: any) {
