@@ -42,7 +42,7 @@
   padding-top: 5px;
   background-color: #267ea3de;
   max-width: 100vw;
-  height: 100vh;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: start;
