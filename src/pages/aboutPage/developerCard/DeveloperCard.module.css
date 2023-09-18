@@ -5,7 +5,7 @@
   max-width: 250px;
   height: 480px;
   flex-direction: column;
-  gap: 3px;
+  gap: 1px;
   background-color: #009688;
   border: 1px solid #267ea3de;
   padding: 5px;
@@ -22,14 +22,13 @@
 .topWrapper {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 2px;
 }
 
 .descriptionWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
 }
 
 .titleContainer {
@@ -61,7 +60,7 @@
 
 .imageContainer {
   overflow: hidden;
-  height: 150px;
+  height: 170px;
   position: relative;
   border-radius: 3px;
   display: flex;
