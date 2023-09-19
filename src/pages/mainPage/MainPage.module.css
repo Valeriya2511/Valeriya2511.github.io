@@ -5,6 +5,7 @@
   background-position: center;
   background-size: cover;
   color: white;
+  text-shadow: 0 0 5px #080909;
   display: flex;
 }
 

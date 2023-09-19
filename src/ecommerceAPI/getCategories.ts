@@ -1,5 +1,4 @@
 export const getCategories = async (token: string) => {
-  
   const data = await fetch(
     'https://api.australia-southeast1.gcp.commercetools.com/ecommerce-application_1/categories?limit=110',
     {
@@ -10,6 +9,6 @@ export const getCategories = async (token: string) => {
       },
     },
   );
-  const dataJson=await data.json();
+  const dataJson = await data.json();
   return await dataJson.results;
 };

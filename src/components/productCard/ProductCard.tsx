@@ -2,18 +2,16 @@ import styles from './ProductCard.module.css';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { CategoriesContext } from '../../context/categoriesContext/CategoriesContext';
-import { findAllByAltText } from '@testing-library/react';
 import { Category } from '../sidebar/Sidebar';
-
-// interface productDataObject {
-//   product: {};
-// }
+import { queryCartsData } from '../../ecommerceAPI/queryCartsData';
+import { addLineItem } from '../../ecommerceAPI/addLineItem';
+import { BasketContext } from '../../context/basketContext/BasketContext';
 
 export function ProductCard({ product }: any) {
   const { categories } = useContext(CategoriesContext);
   const categoriesArray: Category[] = categories;
   const catList: string[] = [];
-  for (let cat of product.masterData.current.categories) {
+  for (const cat of product.masterData.current.categories) {
     const res: Category | undefined = categoriesArray.find(el => el.id === cat.id);
     if (res) {
       catList.push(res.name.en);
@@ -30,7 +28,7 @@ export function ProductCard({ product }: any) {
     size: '',
     description: 'bla-bla-bla',
     categorie: catList.join('/ '),
-    currency: 'USD',
+    currency: 'EUR',
     discount: '-10%',
   };
   const attributList = product.masterData.current.masterVariant.attributes;
@@ -46,12 +44,21 @@ export function ProductCard({ product }: any) {
       productDataObject.brand = attributList[i].value.label;
     }
   }
-
-  const cartHandler = () => {
-    console.log('добавить товар в корзину');
+  const { setBasket } = useContext(BasketContext);
+  const cartHandler = async () => {
+    const userToken = localStorage.getItem('userToken');
+    const dataCarts = await queryCartsData(`${userToken}`);
+    const newBasket = await addLineItem(
+      `${userToken}`,
+      dataCarts.results[0].id,
+      product.id,
+      dataCarts.results[0].version,
+    );
+    setBasket(newBasket);
+    // console.log('newBasket', newBasket);
   };
   return (
-    <Link className={styles.link} to="/productItem">
+    <Link className={styles.link} to="/products">
       <div className={styles.container}>
         <h2 className={styles.title}>{productDataObject.name}</h2>
         <div className={styles.topWrapper}>

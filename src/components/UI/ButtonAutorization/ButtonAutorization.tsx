@@ -1,9 +1,9 @@
-import { useState } from 'react';
 import styles from './ButtonAutorization.module.css';
 // onClick?: (event: React.FormEvent) => void;
 interface IButtonAutorizationProps {
   type: 'button' | 'submit';
   children: string;
+  disabled: boolean;
 }
 // function submitHandler(event: React.FormEvent): () => {} {
 //   event.preventDefault();
@@ -13,9 +13,9 @@ interface IButtonAutorizationProps {
 //   const userData = Object.fromEntries([[login, password]]);
 //   return userData;
 // }
-export default function ButtonAutorization({ type, children }: IButtonAutorizationProps) {
+export default function ButtonAutorization({ type, children, disabled }: IButtonAutorizationProps) {
   return (
-    <button className={styles.buttonAutorization} type={type}>
+    <button className={styles.buttonAutorization} type={type} disabled={disabled}>
       {children}
     </button>
   );

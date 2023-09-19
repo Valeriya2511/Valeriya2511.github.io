@@ -1,11 +1,17 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ProductCard } from '../../components/productCard/ProductCard';
 import styles from './ProductsPage.module.css';
 import { ProductsContext } from '../../context/productsContext/productsContext';
+import { CategoriesContext } from '../../context/categoriesContext/CategoriesContext';
 import { Sidebar } from '../../components/sidebar/Sidebar';
+import Pagination from '../../components/pagination/Pagination';
+import { Loading } from '../../components/loading/Loading';
 
 export function ProductsPage() {
+  const [count, setCount] = useState(3);
   const { products } = useContext(ProductsContext);
+  // console.log(products);
+  const { categories } = useContext(CategoriesContext);
   useEffect(() => {}, [products]);
   return (
     <div className={styles.container}>
@@ -13,12 +19,20 @@ export function ProductsPage() {
         <Sidebar />
       </div>
       <div className={styles.productsColumn}>
-        {products.length &&
+        {products.length ? (
           products.map((element, index) => {
             const { id } = element;
-            return <ProductCard product={element} key={id} />;
-          })}
+            if (index <= count) {
+              return <ProductCard product={element} key={id} />;
+            }
+          })
+        ) : categories.length ? (
+          <img src="./SoldOut.jpg" alt="Sold Out"></img>
+        ) : (
+          <Loading />
+        )}
       </div>
+      <Pagination countItem={count} onClick={setCount} />
     </div>
   );
 }
